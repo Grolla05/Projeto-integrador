@@ -37,25 +37,44 @@
         }
     </style>
 </head>
-
 <body>
     <header>
-        <div>
-            <ul>
-                <li><button type="button" id="Login"><a href="http://127.0.0.1:5500/PI:%20Desenvolvimento%20Web/Projeto_integrador/Pages/Login.html">Login</a></button></li>
-                <li><button type="button" id="Register"><a href="http://127.0.0.1:5500/PI:%20Desenvolvimento%20Web/Projeto_integrador/Pages/Register.html">Register</a></button></li>
-            </ul>
-            <button id="menu-toggle" class="toggle-btn">&#9776;</button>
-        </div>
-        <img class="Logo-Puc-Bet" src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true" alt="Logo Puc Bet">
-        <script src="script.js"></script>
-        <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
+        <div id="navegacao">
+            <nav>
+                <ul>
+                    <ul class="button-container-direita">
+                        <li><button type="button" id="Login"><a>Login</a></button>
+                        </li>
+                        <li><button type="button" id="Register"><a>Register</a></button>
+                        </li>
+                    </ul>
+                    <ul class="button-container-esquerda">
+                        <li><button type="button" id="Cassino"><a>Cassino</a></button>
+                        </li>
+                        <li><button type="button" id="Precisa-ajuda"><a><b>Precisa de Ajuda?</b></a></button>
+                        </li>
+                    </ul>
+                    <a href="http://127.0.0.1:5500/Pages/home.html">
+                        <img class="Logo-Puc-Bet" src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true" alt="Logo Puc Bet">
+                    </a></div>
+                </div>    
     </header>
     <div class="container">
         <h1>404</h1>
         <h2>Page Not Found</h2>
-        <p>The page you are looking for doesn't exist or another error occurred. Go to <a href="http://127.0.0.1:5500/PI:%20Desenvolvimento%20Web/Projeto_integrador/Pages/home.html">Home Page.</a></p>
+        <p>The page you are looking for doesn't exist or another error occurred. Go to <a href="http://127.0.0.1:5500/Pages/home.html">Home Page.</a></p>
     </div>
 </body>
-
+<footer>
+    <ul class="button-container-footer">
+        <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a
+                    href="http://127.0.0.1:5500/PI:%20Desenvolvimento%20Web/Projeto_integrador/Pages/about_us.html">Sobre
+                    Nos</a></button></li>
+        <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a
+                    href="http://127.0.0.1:5500/PI:%20Desenvolvimento%20Web/Projeto_integrador/Pages/Contact.html">Central de Ajuda</a></button>
+        </li>
+    </ul>
+    <p>Contato para SAC: (11) 99999-9999</p>
+    <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
+</footer>
 </html>
