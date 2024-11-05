@@ -58,3 +58,84 @@ function sendMail(nome, email, mensagem) {
         },
       );
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  padding: 20px;
+  margin: 0;
+}
+
+.form-container {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+  transition: transform 0.2s;
+}
+
+.form-container:hover {
+  transform: translateY(-5px);
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #3a9ad9;
+}
+
+button {
+  background-color: #3a9ad9;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #337ab7;
+  transform: translateY(-3px);
+}
+
+button:active {
+  background-color: #2c6b9e;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.ball {
+  background-color: #f4f4f9;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s;
+}
+
+img.Logo-Puc-Bet {
+  display: block;
+  margin: 20px auto;
+  width: 150px;
+  height: auto;
+}
+
