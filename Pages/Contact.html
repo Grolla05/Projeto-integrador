@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="styless.css">
+    <link rel="stylesheet" href="styless-Contac.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 
 <body>
-    
     <header>
         <div id="navegacao">
             <nav>
@@ -25,30 +24,29 @@
                         <li><button type="button" id="Precisa-ajuda"><a><b>Precisa de Ajuda?</b></a></button></li>
                     </ul>
                     <a href="http://127.0.0.1:5500/Pages/home.html">
-                        <img class="Logo-Puc-Bet" src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true" alt="Logo Puc Bet">
+                        <img class="Logo-Puc-Bet"
+                            src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
+                            alt="Logo Puc Bet">
                     </a>
                 </ul>
             </nav>
-        </div>    
-    </header>
-
-
-         
-         <div class="form-container">
-            <h1>CONTATE-NOS</h1>
-            <form id="contactForm" method="POST" onsubmit="return handleSubmit(event);">
-                <div class="input-group" id="nome">
-                    <input type="text" name="nome" placeholder="Digite seu Nome" required>
-                </div>
-                <div class="input-group" id="email">
-                    <input type="email" name="email" placeholder="Digite um e-mail válido" required>
-                </div>
-                <div class="input-group" id="mensagem">
-                    <textarea name="mensagem" rows="4" placeholder="Digite sua dúvida aqui" required></textarea>
-                </div>
-                <button type="submit" class="button-submit" onclick="sendMail('nome', 'email', ' ')">Enviar</button>
-            </form>
         </div>
+    </header>
+    <div class="form-container">
+        <h1>CONTATE-NOS</h1>
+        <form id="contactForm" method="POST" onsubmit="return handleSubmit(event);">
+            <div class="input-group" id="nome">
+                <input type="text" name="nome" placeholder="Digite seu Nome" required>
+            </div>
+            <div class="input-group" id="email">
+                <input type="email" name="email" placeholder="Digite um e-mail válido" required>
+            </div>
+            <div class="input-group" id="mensagem">
+                <textarea name="mensagem" rows="4" placeholder="Digite sua dúvida aqui" required></textarea>
+            </div>
+            <button type="submit" class="button-submit">Enviar</button>
+        </form>
+    </div>
     <script src="Script_Suporte.js"></script>
 </body>
 

@@ -59,4 +59,3 @@ function sendMail(nome, email, mensagem) {
       );
 }
 
-
