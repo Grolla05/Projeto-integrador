@@ -15,11 +15,26 @@
             <nav>
                 <ul>
                     <ul class="button-container-direita">
-                        <li><button type="button" id="Login"><a>Login</a></button>
+                        <li><!-- Botão para abrir o pop-up -->
+                            <button class="open-popup-btn" type="button" id="Login"
+                                onclick="openPopupLogin()"><a>Login</a></button>
+
+                            <!-- Modal de registro -->
+                            <div class="modal-bg" id="modalBg">
+                                <div class="modal">
+                                    <span class="close-btn" onclick="closePopupLogin()">×</span>
+                                    <h2>Loga-se na sua conta</h2>
+                                    <form>
+                                        <input type="email" placeholder="E-mail" required>
+                                        <input type="password" placeholder="Senha" required>
+                                        <button type="submit">Logar-se</button>
+                                    </form>
+                                </div>
+                            </div>
                         </li>
                         <li><!-- Botão para abrir o pop-up -->
                             <button class="open-popup-btn" onclick="openPopup()">Registrar-se</button>
-                        
+
                             <!-- Modal de registro -->
                             <div class="modal-bg" id="modalBg">
                                 <div class="modal">
@@ -52,9 +67,23 @@
     </header>
     <div class="sidebar">
         <div class="bonus-button">
-            <button><img class="Logo-Puc-Bet-sidebar" id="Logo-Puc-Bet-sidebar"
-                    src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo-Sem-Nome.png?raw=true">...
+            <button class="open-popup-btn" onclick="openPopup()"><img class="Logo-Puc-Bet-sidebar"
+                    id="Logo-Puc-Bet-sidebar"
+                    src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo-Sem-Nome.png?raw=true">..
                 50 PUCOINS Grátis</button>
+            <!-- Modal de registro -->
+            <div class="modal-bg" id="modalBg">
+                <div class="modal">
+                    <span class="close-btn" onclick="closePopup()">×</span>
+                    <h2>Crie sua Conta</h2>
+                    <form>
+                        <input type="text" placeholder="Nome Completo" required>
+                        <input type="email" placeholder="E-mail" required>
+                        <input type="password" placeholder="Senha" required>
+                        <button type="submit">Registrar</button>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="menu">
             <ul>
@@ -75,7 +104,7 @@
         </div>
         <div class="menu">
             <h3 onclick="toggleCassinolist()" class="group-Cassino">
-                Jogos de Cassino
+                Cassino
                 <span class="Cassino-icon">▼</span>
             </h3>
             <ul class="Cassino-list">

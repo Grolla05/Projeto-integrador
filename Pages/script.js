@@ -62,8 +62,8 @@ function toggleCassinolist() {
   }
 }
 
- // Função para abrir o pop-up
- function openPopup() {
+// Função para abrir o pop-up
+function openPopup() {
     document.getElementById("modalBg").style.display = "flex";
 }
 
@@ -77,5 +77,23 @@ window.onclick = function(event) {
     const modalBg = document.getElementById("modalBg");
     if (event.target === modalBg) {
         closePopup();
+    }
+};
+
+// Função para abrir o pop-up
+function openPopupLogin() {
+    document.getElementById("modalBg").style.display = "flex";
+}
+
+// Função para fechar o pop-up
+function closePopupLogin() {
+    document.getElementById("modalBg").style.display = "none";
+}
+
+// Fechar o pop-up ao clicar fora da área do modal
+window.onclick = function(event) {
+    const modalBg = document.getElementById("modalBg");
+    if (event.target === modalBg) {
+        closePopupLogin();
     }
 };
