@@ -113,6 +113,98 @@ header {
     /* Azul-marinho mais claro ao passar o mouse */
 }
 
+/* Estilo para o botão */
+.open-popup-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #5D5A88;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.open-popup-btn:hover {
+    background-color: #037;
+}
+
+/* Estilo para o fundo do modal */
+.modal-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Estilo para o modal */
+.modal {
+    background-color: #1F2840;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.modal button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #5D5A88;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal button:hover {
+    background-color: #037;
+}
+
+.close-btn {
+    color: #aaa;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close-btn:hover {
+    color: #555;
+}
+
+/* Animação para o modal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 /* Container para manter os botões no lado esquerdo */
 .button-container-esquerda {
     font-family: 'Poppins', sans-serif;
@@ -233,6 +325,20 @@ header {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+/*Container para estilizar e manter a logo na esquerda logo apos o menu*/
+.Logo-Puc-Bet-sidebar {
+    transform: scale(0.1);
+    /* Reduz a imagem para 50% do tamanho original */
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    /* Posiciona o container de botões */
+    left: -115px;
+    /* Alinha o container à esquerda */
+    top: -58px;
+    /* Alinha o container ao topo */
 }
 
 .sidebar {
@@ -370,6 +476,79 @@ header {
     
     color: transparent;
 }
+
+.group-game {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.group-game .PUCBET-icon.expanded {
+    transform: rotate(180deg);
+}
+
+.PUCBET-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.game-list {
+    list-style: none;
+    padding-left: 0;
+    max-height: 0;
+    display: block; /* Padrão: mostrar a lista */
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+}
+
+.game-list.expanded {
+    max-height: 500px; /* Define uma altura máxima quando expandido */
+    padding: 5px 0;
+}
+
+.game-list.hidden {
+    display: none; /* Oculta a lista quando minimizada */
+}
+
+/* Estilos para o grupo */
+.group-Cassino {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Cassino-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.group-Cassino .Cassino-icon.expanded {
+    transform: rotate(180deg); /* Rotaciona a seta ao expandir */
+}
+
+/* Estilos para a lista de jogos do Cassino */
+.Cassino-list {
+    list-style: none;
+    padding-left: 0;
+    max-height: 0; /* Inicialmente colapsada */
+    overflow: hidden; /* Oculta o conteúdo excedente ao colapsar */
+    transition: max-height 0.5s ease, padding 0.3s ease; /* Suaviza a expansão/colapso */
+}
+
+/* Expansão da lista */
+.Cassino-list.expanded {
+    max-height: 1000px; /* Define uma altura máxima ao expandir */
+    padding: 5px 0;
+}
+
 
 body {
     font-family: 'Open Sans', sans-serif;
