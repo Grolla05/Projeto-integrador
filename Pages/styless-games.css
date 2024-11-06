@@ -335,7 +335,7 @@ header {
     justify-content: flex-end;
     position: absolute;
     /* Posiciona o container de botões */
-    left: -115px;
+    left: -97px;
     /* Alinha o container à esquerda */
     top: -58px;
     /* Alinha o container ao topo */
@@ -576,49 +576,8 @@ body {
     transition: background 0.2s linear;
 }
 
-.banner-Principal {
-    position: relative;
-    width: 80%;
-    max-width: 800px;
-    background-color: #2f3761;
-    border-radius: 15px;
-    padding: 20px;
-    color: #fff;
-    overflow: hidden;
-    margin: 0 auto; /* Centraliza horizontalmente */
-}
-
-.banner-Principal h1 {
-    font-size: 24px;
-    margin: 0;
-    margin-bottom: 10px;
-    color: #FFFFFF;
-}
-
-.banner-Principal p {
-    font-size: 16px;
-    color: #b0b8d0;
-    margin: 0 0 20px;
-}
-
-.banner-Principal button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #8c87d9;
-    border: none;
-    border-radius: 15px;
-    color: #fff;
-    cursor: pointer;
-}
-
-.banner-Principal button:hover {
-    background-color: transparent;
-}
-
 /* Seção sobre nós */
 main {
-    font-family: 'Montserrat', sans-serif;
-    /* Fonte para títulos */
     padding: 20px;
     margin-left: 50px;
     text-align: center;
@@ -627,49 +586,9 @@ main {
     color: white;
 }
 
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #00d7ff;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    color: #00d7ff;
-}
-
 section p {
     font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 15px;
-}
-
-ul {
-    list-style-type: none;
-    margin-left: 0;
-    padding-left: 20px;
-}
-
-ul li {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
-
-/* Estilo de listas e destaques */
-ul li strong {
-    color: #ffffff;
-}
-
-ol {
-    list-style-type: decimal;
-    margin-left: 20px;
-    padding-left: 20px;
-}
-
-ol li {
     margin-bottom: 15px;
 }
 
@@ -690,6 +609,141 @@ section {
     margin-top: 80px;
     /* Espaço abaixo do header fixo */
 }
+
+#crash-history {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#crash-history h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+#history {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.crash-history-item {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #444;
+}
+
+#game-container {
+    text-align: center;
+    background: rgba(34, 34, 34, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 100%;
+    max-width: 200%;
+    height: 550px;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#crash-ball {
+    position: absolute;
+    bottom: 80px; /* Ajuste o valor conforme necessário para a bolinha ficar acima do botão de bet */
+    left: 50%; /* Centraliza a bolinha horizontalmente */
+    transform: translateX(-50%); /* Garante que a bolinha fique centralizada */
+    width: 20px; /* Ajuste o tamanho conforme necessário */
+    height: 20px;
+    border-radius: 50%; /* Torna a bolinha redonda */
+    background-color: red; /* Cor da bolinha, pode ser alterada */
+    visibility: hidden; /* Inicialmente invisível até o jogo começar */
+}
+
+
+/* Estilo para centralizar o contador de countdown */
+#countdown {
+    font-size: 2rem;
+    font-weight: bold;
+    color: whitesmoke;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;  /* Inicialmente escondido */
+    z-index: 10;
+}
+
+#multiplier{
+    position: absolute;
+    top: 20px;
+    color: #fff;
+    font-size: 24px;
+}
+
+#buttons {
+    position: absolute;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff0000;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s, bottom 0.5s;
+}
+
+#toast.show {
+    opacity: 1;
+    bottom: 50px;
+}
+
+#bet-placed-message {
+    position: absolute;
+    top: 50%;  /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para que o texto fique completamente centralizado */
+    font-size: 2rem; /* Tamanho da fonte */
+    color: white; /* Cor do texto */
+    font-weight: bold;
+    display: none; /* Inicialmente oculta */
+    z-index: 10; /* Certifica-se de que o texto fique acima de outros elementos */
+}
+
 
 footer {
     background-color: #1F2840;

@@ -79,10 +79,3 @@ window.onclick = function(event) {
         closePopup();
     }
 };
-
-// JavaScript to add floating effect to the chips
-const chips = document.querySelectorAll('.chip');
-chips.forEach((chip, index) => {
-    chip.style.animationDelay = `${Math.random() * 2}s`;
-    chip.style.transform = `rotate(${Math.random() * 360}deg)`;
-});

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crash</title>
+    <link rel="stylesheet" href="styless-games.css">
+</head>
+
+<body>
+    <header>
+        <div id="navegacao">
+            <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+            <nav>
+                <ul>
+                    <ul class="button-container-direita">
+                        <li>
+                            <button type="button" id="Login"><a>Login</a></button>
+                        </li>
+                        <li><!-- Botão para abrir o pop-up -->
+                            <button class="open-popup-btn" onclick="openPopup()">Registrar-se</button>
+
+                            <!-- Modal de registro -->
+                            <div class="modal-bg" id="modalBg">
+                                <div class="modal">
+                                    <span class="close-btn" onclick="closePopup()">×</span>
+                                    <h2>Crie sua Conta</h2>
+                                    <form>
+                                        <input type="text" placeholder="Nome Completo" required>
+                                        <input type="email" placeholder="E-mail" required>
+                                        <input type="password" placeholder="Senha" required>
+                                        <button type="submit">Registrar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="button-container-esquerda">
+                        <li><button type="button" id="Cassino"><a>Cassino</a></button>
+                        </li>
+                        <li><button type="button" id="Precisa-ajuda"><a
+                                    href="http://127.0.0.1:5500/Pages/Contact.html"><b>Precisa de
+                                        Ajuda?</b></a></button>
+                        </li>
+                    </ul>
+                    <a href="http://127.0.0.1:5500/Pages/home.html">
+                        <img class="Logo-Puc-Bet"
+                            src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
+                            alt="Logo Puc Bet">
+                    </a>
+        </div>
+    </header>
+    <div class="sidebar">
+        <div class="bonus-button">
+            <button class="open-popup-btn" onclick="openPopup()"><img class="Logo-Puc-Bet-sidebar"
+                    id="Logo-Puc-Bet-sidebar"
+                    src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo-Sem-Nome.png?raw=true">..
+                50 PUCOINS Grátis</button>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><span class="icon">🎮</span> <span class="text">Jogado Recentemente</span></li>
+            </ul>
+            <h3 onclick="toggleGamelist()" class="group-game">
+                Originais da PUCBET
+                <span class="PUCBET-icon">▼</span>
+            </h3>
+            <ul class="game-list">
+                <li><span class="icon">⚡</span> <span class="text">Crash</span></li>
+                <li><span class="icon">💵</span> <span class="text">Double</span></li>
+                <li><span class="icon">💣</span> <span class="text">Mines</span></li>
+                <li><span class="icon">🍓</span> <span class="text">Fruit Slice</span></li>
+                <li><span class="icon">🎰</span> <span class="text">Fortune Double</span></li>
+                <li><span class="icon">🎲</span> <span class="text">Dice</span></li>
+            </ul>
+        </div>
+        <div class="menu">
+            <h3 onclick="toggleCassinolist()" class="group-Cassino">
+                Cassino
+                <span class="Cassino-icon">▼</span>
+            </h3>
+            <ul class="Cassino-list">
+                <li><span class="icon">🃏</span> <span class="text">Blackjack</span></li>
+                <li><span class="icon">♠️</span> <span class="text">Poker</span></li>
+                <li><span class="icon">💼</span> <span class="text">Baccarat</span></li>
+                <li><span class="icon">🎡</span> <span class="text">Roleta</span></li>
+                <li><span class="icon">♣️</span> <span class="text">Omaha Poker</span></li>
+                <li><span class="icon">♦️</span> <span class="text">Three Card Poker</span></li>
+                <li><span class="icon">🎰</span> <span class="text">Slot Machines</span></li>
+            </ul>
+        </div>
+
+        <div class="menu">
+            <li><span class="icon">➕</span> <span class="text">Todos os Jogos</span></li>
+            <li><span class="icon">🎲</span> <span class="text">Slots</span></li>
+            </ul>
+        </div>
+        <script src="script.js"></script>
+    </div>
+    <main>
+        <section>
+            <!-- Histórico dos últimos Crash -->
+            <div id="crash-history">
+                <h3>Últimos Crashs</h3>
+                <div id="history"></div> <!-- Onde o histórico será exibido -->
+            </div>
+            <div id="game-container">
+                <div id="dragon-trail"></div>
+                <div id="crash-ball"></div>
+                <div id="multiplier">0.00x</div>
+                <div id="countdown">3</div>
+                <div id="bet-placed-message"></div> <!-- Mensagem de Bet Placed -->
+                <div id="buttons">
+                    <button id="bet-button">Bet</button>
+                    <button id="cashout-button" disabled>Cash Out</button>
+                </div>
+            </div>
+            <div id="toast"></div>
+    
+        </section>
+    </main>
+    <script src="Script_Crash_game.js"></script>
+</body>
+<footer>
+    <ul class="button-container-footer">
+        <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a
+                    href="http://127.0.0.1:5500/Pages/about_us.html">Sobre
+                    Nos</a></button></li>
+        <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a
+                    href="http://127.0.0.1:5500/Pages/Contact.html">Central de Ajuda</a></button>
+        </li>
+    </ul>
+    <p>Contato para SAC: (11) 99999-9999</p>
+    <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
+</footer>
+
+</html>

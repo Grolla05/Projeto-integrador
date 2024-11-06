@@ -278,6 +278,26 @@ body {
     }
 }
 
+li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Estilo de listas e destaques */
+li strong {
+    color: #ffffff;
+}
+
+li {
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+li:hover {
+    color: #00d7ff;
+}
+
 footer {
     background-color: #1F2840;
     color: white;
