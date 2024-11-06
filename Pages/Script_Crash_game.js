@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let animationRunning = false;
     let multiplier = 0.00;
+    
     let isPlaying = false;
     let interval;
     let countdown = 3;
