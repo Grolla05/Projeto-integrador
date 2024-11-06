@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function animate() {
             x += speed;
-            y = Math.pow(x, 3) / 50; // A posição vertical da bolinha
+            y = Math.pow(x, 3) / 1000; // A posição vertical da bolinha
             ball.style.transform = `translate(${x * 10}px, ${-y}px)`; // Move a bolinha
 
             // Cria o rastro vermelho

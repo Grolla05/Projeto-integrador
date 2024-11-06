@@ -651,19 +651,51 @@ section {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-}
+    }
 
-#crash-ball {
+
+#crash-ball { 
     position: absolute;
     bottom: 80px; /* Ajuste o valor conforme necessário para a bolinha ficar acima do botão de bet */
-    left: 50%; /* Centraliza a bolinha horizontalmente */
+    left: 5%; /* Centraliza a bolinha horizontalmente */
     transform: translateX(-50%); /* Garante que a bolinha fique centralizada */
     width: 20px; /* Ajuste o tamanho conforme necessário */
     height: 20px;
     border-radius: 50%; /* Torna a bolinha redonda */
-    background-color: red; /* Cor da bolinha, pode ser alterada */
+    background-color: red; /* Cor da bolinha */
     visibility: hidden; /* Inicialmente invisível até o jogo começar */
 }
+
+#dragon-trail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Garante que o rastro não interfira nos cliques */
+    overflow: hidden;
+}
+
+.trail {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: white; /* Cor do rastro */
+    border-radius: 50%;
+    opacity: 0.7;
+    pointer-events: none;
+    animation: fadeTrail 0.5s forwards;
+}
+
+@keyframes fadeTrail {
+    0% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 
 
 /* Estilo para centralizar o contador de countdown */
@@ -835,3 +867,4 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
