@@ -62,20 +62,56 @@ function toggleCassinolist() {
   }
 }
 
-// Função para abrir o pop-up
-function openPopup() {
-    document.getElementById("modalBg").style.display = "flex";
+// Função para abrir o pop-up de Cadastro
+function openPopupRegister() {
+    document.getElementById("modalBg-register").style.display = "flex";
+}
+
+// Função para fechar o pop-up de Cadastro
+function closePopupRegister() {
+    document.getElementById("modalBg-register").style.display = "none";
+}
+
+// Função para abrir o pop-up de Login
+function openPopupLogin() {
+    document.getElementById("modalBg-login").style.display = "flex";
+}
+
+// Função para fechar o pop-up de Login
+function closePopupLogin() {
+    document.getElementById("modalBg-login").style.display = "none";
+}
+
+// Fechar o pop-up ao clicar fora da área do modal de Cadastro
+window.onclick = function(event) {
+    const modalBgRegister = document.getElementById("modalBg-register");
+    if (event.target === modalBgRegister) {
+        closePopupRegister();
+    }
+};
+
+// Fechar o pop-up ao clicar fora da área do modal de Login
+window.onclick = function(event) {
+    const modalBgLogin = document.getElementById("modalBg-login");
+    if (event.target === modalBgLogin) {
+        closePopupLogin();
+    }
+};
+
+// Função para abrir o pop-up de Login
+function openPopupLogin() {
+    document.getElementById("modalBg-login").style.display = "flex";
 }
 
 // Função para fechar o pop-up
-function closePopup() {
-    document.getElementById("modalBg").style.display = "none";
+function closePopupLogin() {
+    document.getElementById("modalBg-login").style.display = "none";
 }
 
 // Fechar o pop-up ao clicar fora da área do modal
 window.onclick = function(event) {
-    const modalBg = document.getElementById("modalBg");
-    if (event.target === modalBg) {
-        closePopup();
+    const modalBglogin = document.getElementById("modalBg-login");
+    if (event.target === modalBglogin) {
+        closePopupLogin();
     }
 };

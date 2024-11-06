@@ -129,6 +129,118 @@ header {
     background-color: #037;
 }
 
+/* Estilo para o botão */
+.open-popup-btn-login {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.open-popup-btn-Login:hover {
+    background-color: #037;
+}
+
+/* Estilo para o fundo do modal */
+#modalBg-login {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sombra escura */
+    z-index: 9999; /* Para garantir que fique sobre o conteúdo */
+}
+ 
+/* Estilo para a sombra do fundo */
+.modal-Bg-login {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sombra escura */
+    z-index: 9999; /* Garantir que o modal fique sobre outros elementos */
+    display: flex; /* Flexbox para centralizar o conteúdo */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* Estilo para o modal */
+.modal-login {
+    background-color: #444072;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 300px; /* Definindo uma largura fixa */
+    max-width: 90%; /* Para garantir que não ultrapasse a tela */
+}   
+
+.modal-login .h2-login {
+    font-size: 12px;
+    color: whitesmoke;
+    padding-top: 10%;
+}
+
+.modal-login .h2-login:hover {
+    color: whitesmoke;
+}
+
+/* Estilo para os inputs e o botão do formulário */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+}
+
+.modal-login button{
+    width: 100%;
+    padding: 10px;
+    background-color: #5D5A88;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5%;
+}
+
+.modal-login button:hover {
+    background-color: #5245E0;
+}
+
+.Logo-Puc-Bet-register{
+    transform: scale(0.28);
+    /* Reduz a imagem para 50% do tamanho original */
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    /* Posiciona o container de botões */
+    left: -135px;
+    /* Alinha o container à esquerda */
+    top: -35px;
+    /* Alinha o container ao topo */    
+}
+
+.h2-login{
+    font-size: 12px;
+    color: whitesmoke;
+}
+
+/* Animação para o modal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 /* Container para manter os botões no lado esquerdo */
 .button-container-esquerda {
     font-family: 'Poppins', sans-serif;
@@ -501,7 +613,7 @@ body {
 }
 
 /* Estilo para o fundo do modal */
-#modalBg {
+#modalBg-register {
     display: none;
     position: fixed;
     top: 0;
@@ -513,7 +625,7 @@ body {
 }
  
 /* Estilo para a sombra do fundo */
-.modal-bg {
+.modal-Bg-register {
     display: none; /* Inicialmente escondido */
     position: fixed;
     top: 0;
@@ -538,25 +650,14 @@ body {
     max-width: 90%; /* Para garantir que não ultrapasse a tela */
 }   
 
-.modal h2 {
+.modal .h2-registre-se {
     font-size: 12px;
     color: whitesmoke;
     padding-top: 10%;
 }
 
-.modal h2:hover {
+.modal .h2-registre-se:hover {
     color: whitesmoke;
-}
-
-.modal input[type="text"],
-.modal input[type="email"],
-.modal input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    box-sizing: border-box;
 }
 
 /* Estilo para os inputs e o botão do formulário */
