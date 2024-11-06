@@ -80,20 +80,9 @@ window.onclick = function(event) {
     }
 };
 
-// Função para abrir o pop-up
-function openPopupLogin() {
-    document.getElementById("modalBg").style.display = "flex";
-}
-
-// Função para fechar o pop-up
-function closePopupLogin() {
-    document.getElementById("modalBg").style.display = "none";
-}
-
-// Fechar o pop-up ao clicar fora da área do modal
-window.onclick = function(event) {
-    const modalBg = document.getElementById("modalBg");
-    if (event.target === modalBg) {
-        closePopupLogin();
-    }
-};
+// JavaScript to add floating effect to the chips
+const chips = document.querySelectorAll('.chip');
+chips.forEach((chip, index) => {
+    chip.style.animationDelay = `${Math.random() * 2}s`;
+    chip.style.transform = `rotate(${Math.random() * 360}deg)`;
+});

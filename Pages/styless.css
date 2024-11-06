@@ -565,6 +565,45 @@ body {
     transition: background 0.2s linear;
 }
 
+.banner-Principal {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    background-color: #2f3761;
+    border-radius: 15px;
+    padding: 20px;
+    color: #fff;
+    overflow: hidden;
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.banner-Principal h1 {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+}
+
+.banner-Principal p {
+    font-size: 16px;
+    color: #b0b8d0;
+    margin: 0 0 20px;
+}
+
+.banner-Principal button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #8c87d9;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.banner-Principal button:hover {
+    background-color: transparent;
+}
+
 /* Seção sobre nós */
 main {
     font-family: 'Montserrat', sans-serif;
@@ -624,7 +663,6 @@ ol li {
 }
 
 /* Efeitos visuais no hover */
-h1:hover,
 h2:hover,
 p:hover,
 ul li:hover {
