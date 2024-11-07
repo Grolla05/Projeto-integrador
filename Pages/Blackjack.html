@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackjack</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-    <!-- Normalizes the CSS for all browsers -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"> <!-- Normalizes the CSS for all browsers -->
     <link rel="stylesheet" href="styless-Blackjack.css">
 </head>
 
@@ -70,7 +69,7 @@
             </h3>
             <ul class="game-list">
                 <li><a class="sidebar-link" href="http://127.0.0.1:5500/pages/crash.html"><span
-                            class="icon">⚡</span><span class="text">Crash</a></span></li>
+                    class="icon">⚡</span><span class="text">Crash</a></span></li>
                 <li><span class="icon">💵</span> <span class="text">Double</span></li>
                 <li><span class="icon">💣</span> <span class="text">Mines</span></li>
                 <li><span class="icon">🍓</span> <span class="text">Fruit Slice</span></li>
@@ -85,11 +84,11 @@
             </h3>
             <ul class="Cassino-list">
                 <li><a class="sidebar-link" href="http://127.0.0.1:5500/Pages/Blackjack.html"><span
-                            class="icon">🃏</span> <span class="text">Blackjack</a></span></li>
+                    class="icon">🃏</span> <span class="text">Blackjack</a></span></li>
                 <li><span class="icon">♠️</span> <span class="text">Poker</span></li>
                 <li><span class="icon">💼</span> <span class="text">Baccarat</span></li>
                 <li><a class="sidebar-link" href="http://127.0.0.1:5500/Pages/Roulette.html"></a><span
-                        class="icon">🎡</span> <span class="text">Roleta</a></span></li>
+                    class="icon">🎡</span> <span class="text">Roleta</a></span></li>
                 <li><span class="icon">♣️</span> <span class="text">Omaha Poker</span></li>
                 <li><span class="icon">♦️</span> <span class="text">Three Card Poker</span></li>
                 <li><span class="icon">🎰</span> <span class="text">Slot Machines</span></li>
@@ -104,15 +103,14 @@
         <script src="script.js"></script>
     </div>
     <main>
+        <h1>Blackjack Game</h1>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1>Blackjack game</h1>
         <div class="container">
             <div class="player">
                 <div class="player-stats">
-                    <p><span id="player-title">Player</span> | <span id="pbank">Money: </span> | <span id="cbet">Bet:
-                        </span></p>
+                    <p><span id="player-title">Player</span> | <span id="pbank">Money: </span> | <span id="cbet">Bet: </span></p>
                     <p><span id="player-cards-el">Cards: </span> | <span id="player-sum-el">Value: </span></p>
                 </div>
                 <div class="player-cards">
@@ -121,10 +119,8 @@
                     <img src="" id="pcard2">
                     <img src="" id="pcard3">
                     <img src="" id="pcard4">
-                    <img src="https://github.com/michaelyorkpa/Blackjack/blob/master/Blackjack/images/green_back.png?raw=true"
-                        id="pcard5">
-                    <img src="https://github.com/michaelyorkpa/Blackjack/blob/master/Blackjack/images/green_back.png?raw=true"
-                        id="pcard6">
+                    <img src="images/green_back.png" id="pcard5">
+                    <img src="images/green_back.png" id="pcard6">
                     <img src="" id="pcard7">
                     <img src="" id="pcard8">
                     <img src="" id="pcard9">
@@ -136,8 +132,7 @@
             </div>
             <div class="dealer">
                 <div class="dealer-stats">
-                    <span id="dealer-title">Dealer</span> | <span id="dealer-cards-el">Cards: </span> | <span
-                        id="dealer-sum-el">Value: </span>
+                    <span id="dealer-title">Dealer</span> | <span id="dealer-cards-el">Cards: </span> | <span id="dealer-sum-el">Value: </span>
                 </div>
                 <div class="dealer-cards">
                     <img src="" id="dcard0">
@@ -145,10 +140,8 @@
                     <img src="" id="dcard2">
                     <img src="" id="dcard3">
                     <img src="" id="dcard4">
-                    <img src="https://github.com/michaelyorkpa/Blackjack/tree/master/Blackjack/images/green_back.png?raw=true"
-                        id="dcard5">
-                    <img src="https://github.com/michaelyorkpa/Blackjack/tree/master/Blackjack/images/green_back.png?raw=true"
-                        id="dcard6">
+                    <img src="images/green_back.png" id="dcard5">
+                    <img src="images/green_back.png" id="dcard6">
                     <img src="" id="dcard7">
                     <img src="" id="dcard8">
                     <img src="" id="dcard9">
@@ -157,14 +150,13 @@
             </div>
             <div class="buttonarea">
                 <div class="buttons">
-                    <button id="betbtn1" onclick="betButton1()">$ BET</button>
-                    <!-- Value of each bet button controlled in JS file -->
+                    <button id="betbtn1" onclick="betButton1()">$ BET</button> <!-- Value of each bet button controlled in JS file -->
                     <button id="betbtn2" onclick="betButton2()">$ BET</button>
                     <button id="betbtn3" onclick="betButton3()">$ BET</button>
                     <button id="betbtn4" onclick="betButton4()">$ BET</button>
                 </div>
                 <div class="buttons2">
-                    <button id="hitbtn" onclick="hitCard()">HIT</button>
+                    <button id="hitbtn" onclick="hitCard()">HIT</button> 
                     <button id="standbtn" onclick="standCard()">STAND</button>
                     <button id="doublebtn" onclick="doubleDown()">DOUBLE</button>
                 </div>
@@ -188,19 +180,19 @@
                 </div>
             </div>
         </div>
-    </main>
-    <script src="Script-Blackjack-game.js"></script>
-    <footer>
-        <ul class="button-container-footer">
-            <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a
-                        href="http://127.0.0.1:5500/Pages/about_us.html">Sobre
-                        Nos</a></button></li>
-            <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a
-                        href="http://127.0.0.1:5500/Pages/Contact.html">Central de Ajuda</a></button>
-            </li>
-        </ul>
-        <p>Contato para SAC: (11) 99999-9999</p>
-        <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
-    </footer>
+</main>
+<script src="Script-Blackjack-game.js"></script>
+<footer>
+    <ul class="button-container-footer">
+        <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a
+                    href="http://127.0.0.1:5500/Pages/about_us.html">Sobre
+                    Nos</a></button></li>
+        <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a
+                    href="http://127.0.0.1:5500/Pages/Contact.html">Central de Ajuda</a></button>
+        </li>
+    </ul>
+    <p>Contato para SAC: (11) 99999-9999</p>
+    <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
+</footer>
 
 </html>
