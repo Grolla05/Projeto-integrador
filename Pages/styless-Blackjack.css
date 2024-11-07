@@ -343,7 +343,7 @@ header {
 
 .sidebar {
     width: 240px;
-    height: calc(95vh - 70px); /* Ajusta a altura para não sobrepor o header e o footer */
+    height: 100vh; /* Ajusta a altura para cobrir toda a tela */
     background-color: #0f0f1f;
     color: #fff;
     padding: 20px;
@@ -355,7 +355,7 @@ header {
     margin: 0;
     position: fixed;
     top: 70px; /* Espaço para o header */
-    bottom: 70px; /* Espaço para o footer */
+    bottom: 0; /* A sidebar se estende até o final da tela */
     overflow-y: auto; /* Adiciona a rolagem vertical */
     scrollbar-width: thin; /* Define uma barra de rolagem mais fina */
     scrollbar-color: #00d7ff #0f0f1f; /* Cor da barra de rolagem */
@@ -473,7 +473,6 @@ header {
 }
 
 .sidebar.collapsed .text {
-    
     color: transparent;
 }
 
@@ -814,61 +813,42 @@ footer {
     background-color: #1F2840;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
     padding-left: 10px;
     padding-right: 10px;
     position: fixed;
-    bottom: 0;
-    /* Alinha o footer na parte inferior */
-    left: 0;
-    /* Alinha o footer à esquerda */
-    right: 0;
-    /* Alinha o footer à direita */
+    bottom: -100px; /* Inicialmente fora da tela */
+    width: 100%;
     border-top: 2px solid #253C8E;
-    /* Linha de contorno azul */
-    margin-top: 20px;
-    /* Espaçamento para o conteúdo acima */
-    z-index: 1000;
-    /* Coloca o footer acima de outros elementos */
+    transition: bottom 0.5s ease; /* Animação suave ao aparecer */
+    visibility: hidden; /* Oculto inicialmente */
 }
 
 .button-container-footer {
     font-family: 'Poppins', sans-serif;
-    /* Fonte para botões */
     display: flex;
     justify-content: flex-end;
     padding: 20px;
-    /* Adiciona espaço ao redor dos botões */
     position: absolute;
-    /* Posiciona o container de botões */
     right: 0;
-    /* Alinha o container à direita */
     top: 0;
-    /* Alinha o container ao topo */
     list-style-type: none;
-    /* Remove o estilo de lista dos <li> */
 }
 
-/* Remove a formatação padrão de links */
 .button-container-footer a {
     font-family: 'Poppins', sans-serif;
-    /* Fonte para botões */
     text-decoration: none;
     color: inherit;
     display: block;
-    /* O link ocupará todo o botão */
     width: 100%;
     height: 100%;
 }
 
 #Central-Ajuda {
     background-color: #5D5A88;
-    /* Azul-marinho */
     color: #ffffff;
-    /* Texto branco */
     border: none;
     margin: 0 5px;
-    /* Espaço entre os botões */
     padding: 10px 20px;
     border-radius: 20px;
     font-size: 16px;
@@ -876,24 +856,16 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-#Central-Ajuda:hover {
-    background-color: #037;
-    /* Azul-marinho mais claro ao passar o mouse */
-}
-
+#Central-Ajuda:hover,
 #Sobre-nos:hover {
     background-color: #037;
-    /* Azul-marinho mais claro ao passar o mouse */
 }
 
 #Sobre-nos {
     background-color: transparent;
-    /* Sem fundo */
     color: #ffffff;
-    /* Texto branco */
     border: none;
     margin: 0 5px;
-    /* Espaço entre os botões */
     padding: 10px 20px;
     border-radius: 20px;
     font-size: 16px;

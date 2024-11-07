@@ -115,3 +115,44 @@ window.onclick = function(event) {
         closePopupLogin();
     }
 };
+
+
+// Função para exibir ou nao o footer
+document.addEventListener('DOMContentLoaded', function () {
+    const footer = document.querySelector('footer');
+    let lastScrollY = window.scrollY;
+
+    function checkContentHeight() {
+        if (document.body.scrollHeight <= window.innerHeight) {
+            // Mostra o footer se não houver conteúdo suficiente para rolar
+            footer.style.bottom = '0';
+            footer.style.visibility = 'visible';
+        } else {
+            // Caso haja conteúdo suficiente, oculta o footer inicialmente
+            footer.style.bottom = '-100px';
+            footer.style.visibility = 'hidden';
+        }
+    }
+
+    window.addEventListener('scroll', function () {
+        const currentScrollY = window.scrollY;
+
+        // Verifica se o usuário rolou para baixo
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            footer.style.bottom = '0'; // Traz o footer para a tela
+            footer.style.visibility = 'visible';
+        } else {
+            footer.style.bottom = '-100px'; // Esconde o footer para fora da tela
+            footer.style.visibility = 'hidden';
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+
+    // Verifica a altura do conteúdo ao carregar a página
+    checkContentHeight();
+
+    // Verifica a altura do conteúdo ao redimensionar a janela
+    window.addEventListener('resize', checkContentHeight);
+});
+
