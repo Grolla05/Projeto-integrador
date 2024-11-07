@@ -563,7 +563,7 @@ header {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    padding-top: 100px;
+    padding-top: 0px;
     /* Adiciona espaço equivalente à altura do header */
     background-color: #1F2840;
     display: flex;

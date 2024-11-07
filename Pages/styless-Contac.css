@@ -17,8 +17,9 @@ header {
     top: 0;
     width: 100%;
     z-index: 1000;
-    border-bottom: 2px solid #253C8E; /* Adiciona uma linha de contorno azul na parte inferior */
-}
+    border-bottom: 2px solid #253C8E;
+    /* Adiciona uma linha de contorno azul na parte inferior */
+}   
 
 /*Container para estilizar e manter a logo na esquerda logo apos o menu*/
 .Logo-Puc-Bet {
@@ -123,7 +124,7 @@ header {
     position: absolute; /* Permite posicionar a barra em relação ao item */
     left: 5%;
     right: 62.5%;
-    bottom: 5%; /* Posiciona a barra na parte inferior do item */
+    bottom: 30%; /* Posiciona a barra na parte inferior do item */
     height: 3px; /* Espessura da barra */
     background-color: #007bff; /* Cor da barra */
     transform: scaleX(0); /* Inicialmente, a barra está escondida */
@@ -181,7 +182,7 @@ header {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    padding-top: 100px; /* Adiciona espaço equivalente à altura do header */
+    padding-top: 10px; /* Adiciona espaço equivalente à altura do header */
     background-color: #1F2840;
     display: flex;
     min-height: 100vh; /* Garante que o body ocupe pelo menos a altura total da tela */

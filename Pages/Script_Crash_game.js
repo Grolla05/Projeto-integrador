@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isPlaying = false;
     let interval;
     let countdown = 3;
-    const maxMultiplier = 1000.00;
+    const maxMultiplier = 100.00;
     const stopAtY = 500; // Define o valor de Y para parar a bolinha (ajuste conforme necessário)
 
     function createTrail(x, y) {
