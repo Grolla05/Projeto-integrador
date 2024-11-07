@@ -293,7 +293,7 @@ function buildBettingBoard(){
 	for(i = 0; i < numberBlocks.length; i++){
 		let a = i;
 		var nbClass = (numberBlocks[i] == '2 to 1')? 'tt1_block' : 'number_block';
-		var colourClass = (redBlocks.includes(numberBlocks[i]))? ' blueNum' : ((nbClass == 'number_block')? ' blackNum' : '');
+		var colourClass = (redBlocks.includes(numberBlocks[i]))? ' redNum' : ((nbClass == 'number_block')? ' blackNum' : '');
 		var numberBlock = document.createElement('div');
 		numberBlock.setAttribute('class', nbClass + colourClass);
 		numberBlock.onclick = function(){
@@ -347,7 +347,7 @@ function buildBettingBoard(){
 	let otoBlocks = ['EVEN', 'RED', 'BLACK', 'ODD'];
 	for(i = 0; i < otoBlocks.length; i++){
 		let d = i;
-		var colourClass = (otoBlocks[i] == 'RED')? ' blueNum' : ((otoBlocks[i] == 'BLACK')? ' blackNum' : '');
+		var colourClass = (otoBlocks[i] == 'RED')? ' redNum' : ((otoBlocks[i] == 'BLACK')? ' blackNum' : '');
 		var otoBlock = document.createElement('div');
 		otoBlock.setAttribute('class', 'oto_block' + colourClass);
 		otoBlock.onclick = function(){
