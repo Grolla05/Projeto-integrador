@@ -590,7 +590,7 @@ h1{
     margin-left: 20%;
     margin-right: 20%;
 	justify-content: center;
-	background-color: #016D29;
+	background-color: #551313;
 	height: 470px;
 	padding: 20px;
 	color: #fff;
@@ -855,7 +855,7 @@ h1{
 }
 
 .redNum{
-	background-color: #00d7ff;
+	background-color: #191942;
 }
 
 .blackNum{
@@ -1011,7 +1011,7 @@ h1{
 	
 .turret{
 	border-radius: 100%;
-	background: radial-gradient( circle at 30% 30%, #00d7ff, #1a1608 );
+	background: radial-gradient( circle at 30% 30%, #b7c537, #151607 );
 	width: 45px;
 	height: 45px;
 	position: absolute;
@@ -1021,7 +1021,7 @@ h1{
 }
 	
 .turretHandle{
-	background: radial-gradient( circle at 44%, #00d7ff, #000000);
+	background: radial-gradient( circle at 44%, #b7c537, #534308);
 	width: 87px;
 	height: 14px;
 	position: absolute;
@@ -1031,7 +1031,7 @@ h1{
 
 .thendOne, .thendTwo{
 	border-radius: 100%;
-	background: radial-gradient( circle at 30% 30%, #00d7ff, #1a1608 );
+	background: radial-gradient( circle at 30% 30%, #b7c537, #534308 );
 	width: 25px;
 	height: 25px;
 	position: absolute;
@@ -1095,13 +1095,15 @@ h1{
 	margin-top: 4.5px;
 }
 
+
+
 #sect1 .block {
-	background-color: #016D29;
+	background-color: #721313;
 	transform:rotate(9.73deg);
 }
     
 #sect2 .block, #sect4 .block, #sect6 .block, #sect8 .block, #sect10 .block, #sect12 .block, #sect14 .block, #sect16 .block, #sect18 .block, #sect20 .block, #sect22 .block, #sect24 .block, #sect26 .block, #sect28 .block, #sect30 .block, #sect32 .block, #sect34 .block, #sect36 .block {
-	background-color: #00acca;
+	background-color: #072169;
 	transform: rotate(9.73deg);
 }
 
@@ -1283,7 +1285,7 @@ h1{
 	width: 180px;
 	border: 3px solid #9f9a9a;
 	border-radius: 100%;
-	background: radial-gradient(circle at 100px 100px, #006b7e, #000);
+	background: radial-gradient(circle at 100px 100px, #0e2153, #000);
 }
 /*wheel end*/
 
