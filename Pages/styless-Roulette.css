@@ -1080,7 +1080,7 @@ h1{
 .double, .single{
 	position: absolute;
 	z-index: 1;
-	color: #fff;
+	color: #ffffff;
 	font-size: 14px;
 	transform: rotate(3deg);
 }

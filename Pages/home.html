@@ -23,7 +23,7 @@
                         </li>
                     </ul>
                     <ul class="button-container-esquerda">
-                        <li><button type="button" id="Cassino"><a>Cassino</a></button>
+                        <li><button type="button" id="Cassino"><a href="http://127.0.0.1:5500/Pages/CassinoHUB.html">Cassino</a></button>
                         </li>
                         <li><button type="button" id="Precisa-ajuda"><a
                                     href="http://127.0.0.1:5500/Pages/Contact.html"><b>Precisa de
@@ -56,11 +56,6 @@
             <ul class="game-list">
                 <li><a class="sidebar-link" href="http://127.0.0.1:5500/pages/crash.html"><span
                             class="icon">⚡</span><span class="text">Crash</a></span></li>
-                <li><span class="icon">💵</span> <span class="text">Double</span></li>
-                <li><span class="icon">💣</span> <span class="text">Mines</span></li>
-                <li><span class="icon">🍓</span> <span class="text">Fruit Slice</span></li>
-                <li><span class="icon">🎰</span> <span class="text">Fortune Double</span></li>
-                <li><span class="icon">🎲</span> <span class="text">Dice</span></li>
             </ul>
         </div>
         <div class="menu">
@@ -70,104 +65,103 @@
             </h3>
             <ul class="Cassino-list">
                 <li><a class="sidebar-link" href="http://127.0.0.1:5500/Pages/Blackjack.html"><span
-                        class="icon">🃏</span> <span class="text">Blackjack</a></span></li>
-                <li><span class="icon">♠️</span> <span class="text">Poker</span></li>
-                <li><span class="icon">💼</span> <span class="text">Baccarat</span></li>
+                            class="icon">🃏</span> <span class="text">Blackjack</a></span></li>
                 <li><a class="sidebar-link" href="http://127.0.0.1:5500/Pages/Roulette.html"><span
-                        class="icon">🎡</span> <span class="text">Roleta</a></span></li>
-                <li><span class="icon">♣️</span> <span class="text">Omaha Poker</span></li>
-                <li><span class="icon">♦️</span> <span class="text">Three Card Poker</span></li>
-                <li><span class="icon">🎰</span> <span class="text">Slot Machines</span></li>
-            </ul>
-        </div>
-
-        <div class="menu">
-            <li><span class="icon">➕</span> <span class="text">Todos os Jogos</span></li>
-            <li><span class="icon">🎲</span> <span class="text">Slots</span></li>
+                            class="icon">🎡</span> <span class="text">Roleta</a></span></li>
             </ul>
         </div>
     </div>
-
-    <script src="script.js"></script>
     <main>
-        <div class="banner-Principal">
-            <h1>Bem-vindo à Pucbet</h1>
-            <p>Cadastre-se e receba o bonus de deposito de até 1.000 PUCOINS !</p>
-            <button class="open-popup-btn" onclick="openPopupRegister()">Cadastre-se</button>
-            <!-- Modal de registro -->
-            <div class="modal-Bg-register" id="modalBg-register">
-                <div class="modal">
-                    <span class="close-btn" onclick="closePopupRegister()">×</span>
-                    <a href="http://127.0.0.1:5500/Pages/home.html">
-                        <img class="Logo-Puc-Bet-register"
-                            src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
-                            alt="Logo Puc Bet">
-                    </a>
-                    <h2 class="h2-registre-se">Faça login na sua conta da PUC BET </h2>
-                    <form>
-                        <input type="text" placeholder="Nome Completo" required>
-                        <input type="email" placeholder="E-mail" required>
-                        <input type="password" placeholder="Senha" required>
-                        <input type="password" placeholder="Confirme sua Senha" required>
-                        <button class="submit" type="submit">Registrar</button>
-                    </form>
+        <section id="main-content">
+            <div class="welcome-banner">
+                <h1>Bem-vindo à Pucbet</h1>
+                <p>Cadastre-se e receba o bonus de deposito de até 1.000 PUCOINS !</p>
+                <p>Entre para jogar!</p>
+                <button class="open-popup-btn" onclick="openPopupRegister()">Cadastre-se</button>
+                <!-- Modal de registro -->
+                <div class="modal-Bg-register" id="modalBg-register">
+                    <div class="modal">
+                        <span class="close-btn" onclick="closePopupRegister()">×</span>
+                        <a href="http://127.0.0.1:5500/Pages/home.html">
+                            <img class="Logo-Puc-Bet-register"
+                                src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
+                                alt="Logo Puc Bet">
+                        </a>
+                        <h2 class="h2-registre-se">Faça login na sua conta da PUC BET </h2>
+                        <form>
+                            <input type="text" placeholder="Nome Completo" required>
+                            <input type="email" placeholder="E-mail" required>
+                            <input type="password" placeholder="Senha" required>
+                            <input type="password" placeholder="Confirme sua Senha" required>
+                            <button class="submit" type="submit">Registrar</button>
+                        </form>
+                    </div>
+                </div>
+                <button class="open-popup-btn-login" onclick="openPopupLogin()">Entrar</button>
+                <!-- Modal de Login -->
+                <div class="modal-Bg-login" id="modalBg-login">
+                    <div class="modal-login">
+                        <span class="close-btn  " onclick="closePopupLogin()">×</span>
+                        <a href="http://127.0.0.1:5500/Pages/home.html">
+                            <img class="Logo-Puc-Bet-register"
+                                src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
+                                alt="Logo Puc Bet">
+                        </a>
+                        <h2 class="h2-login">Faça login na sua conta da PUC BET </h2>
+                        <form>
+                            <input type="email" placeholder="E-mail" required>
+                            <input type="password" placeholder="Senha" required>
+                            <button class="submit-login" type="submit">Logar-se</button>
+                        </form>
+                    </div>
+                </div>
+                <img class="Banner-principal-home" src="/Pages/images/Cassino Chips blue.png">
+            </div>
+
+            <div class="feature-sections">
+                <div class="feature-card">
+                    <h2>🃏 Batalhas de Slots</h2>
+                    <p>Compita em emocionantes batalhas de máquinas caça-níqueis e ganhe grandes recompensas.</p>
+                    <a href="#" class="feature-link">></a>
+                </div>
+                <div class="feature-card">
+                    <h2>💎 Recompensas Únicas</h2>
+                    <p>Ganhe recompensas exclusivas através de desafios especiais!</p>
+                    <a href="#" class="feature-link">></a>
+                </div>
+                <div class="feature-card">
+                    <h2>👥 Indique um Amigo</h2>
+                    <p>Convide amigos e ganhe bônus por cada indicação bem-sucedida.</p>
+                    <a href="#" class="feature-link">></a>
                 </div>
             </div>
-            <button class="open-popup-btn-login" onclick="openPopupLogin()">Entrar</button>
-            <!-- Modal de Login -->
-            <div class="modal-Bg-login" id="modalBg-login">
-                <div class="modal-login">
-                    <span class="close-btn  " onclick="closePopupLogin()">×</span>
-                    <a href="http://127.0.0.1:5500/Pages/home.html">
-                        <img class="Logo-Puc-Bet-register"
-                            src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
-                            alt="Logo Puc Bet">
-                    </a>
-                    <h2 class="h2-login">Faça login na sua conta da PUC BET </h2>
-                    <form>
-                        <input type="email" placeholder="E-mail" required>
-                        <input type="password" placeholder="Senha" required>
-                        <button class="submit-login" type="submit">Logar-se</button>
-                    </form>
+
+            <div class="additional-sections">
+                <div class="additional-card-cassino">
+                    <h2>🎰 Cassino</h2>
+                    <p>Explore o cassino com diversos jogos disponíveis!</p>
+                    <a href="http://127.0.0.1:5500/Pages/CassinoHUB.html" class="cta-button">IR AO CASSINO</a>
+                </div>
+                <div class="additional-card">
+                    <h2>⚽ Esportes</h2>
+                    <p>Aposte em seus esportes favoritos e ganhe prêmios.</p>
+                    <a href="#" class="cta-button">IR PARA ESPORTES</a>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
+    <footer>
+        <ul class="button-container-footer">
+            <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a
+                        href="http://127.0.0.1:5500/Pages/about_us.html">Sobre
+                        Nos</a></button></li>
+            <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a
+                        href="http://127.0.0.1:5500/Pages/Contact.html">Central de Ajuda</a></button>
+            </li>
+        </ul>
+        <p>Contato para SAC: (11) 99999-9999</p>
+        <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
+    </footer>
     <script src="script.js"></script>
-    <script></script>
 </body>
-<footer>
-    <ul class="button-container-footer">
-        <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a
-                    href="http://127.0.0.1:5500/Pages/about_us.html">Sobre
-                    Nos</a></button></li>
-        <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a
-                    href="http://127.0.0.1:5500/Pages/Contact.html">Central de Ajuda</a></button>
-        </li>
-    </ul>
-    <p>Contato para SAC: (11) 99999-9999</p>
-    <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
-</footer>
-
-</html>
-
-function closePopupRegister() {
-var modalBgRegister = document.getElementById("modalBg-register");
-modalBgRegister.style.display = "none";
-}
-</script>
-</body>
-<footer>
-    <ul class="button-container-footer">
-        <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a
-                    href="http://127.0.0.1:5500/Pages/about_us.html">Sobre
-                    Nos</a></button></li>
-        <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a
-                    href="http://127.0.0.1:5500/Pages/Contact.html">Central de Ajuda</a></button>
-        </li>
-    </ul>
-    <p>Contato para SAC: (11) 99999-9999</p>
-    <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
-</footer>
-
 </html>
