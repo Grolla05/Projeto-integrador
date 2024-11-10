@@ -41,7 +41,7 @@ const myChart = new Chart(ctx, {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const ball = document.getElementById('crash-ball');
     const betButton = document.getElementById('bet-button');
     const countdownElement = document.getElementById('countdown');
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cashoutButton = document.getElementById('cashout-button');
     const toastElement = document.getElementById('toast');
     const dragonTrail = document.getElementById('dragon-trail'); // Elemento do rastro
-    
+
     let animationRunning = false;
     let multiplier = 0.00;
     let isPlaying = false;
@@ -87,15 +87,24 @@ document.addEventListener('DOMContentLoaded', function() {
         let speed = 0.05;
         animationRunning = true;
 
+        // A largura máxima do gráfico, que é a largura da janela
+        const maxX = window.innerWidth;
+
         function animate() {
             x += speed;
             y = calculateY(x); // A posição vertical da bolinha
+
+            // Impede que a bolinha ultrapasse o limite do gráfico
+            if (x * 10 > maxX) {
+                x = maxX / 10; // Limita o valor de x para que a bolinha pare no limite
+            }
+
             ball.style.transform = `translate(${x * 10}px, ${-y}px)`; // Move a bolinha
 
             // Cria o rastro vermelho
             createTrail(x * 10, -y);
 
-            if (x * 10 < window.innerWidth && y < window.innerHeight) {
+            if (x * 10 < maxX && y < window.innerHeight) {
                 requestAnimationFrame(animate);
             } else {
                 animationRunning = false; // Redefine o estado da animação
@@ -112,21 +121,23 @@ document.addEventListener('DOMContentLoaded', function() {
         betPlacedMessage.innerText = 'Bet Placed';
         betPlacedMessage.style.display = 'block';
 
-        const countdownElement = document.getElementById('countdown');
-        countdownElement.style.visibility = 'visible';
-        countdownElement.innerText = countdown;
-
-        betButton.disabled = true;
-        const countdownInterval = setInterval(() => {
-            countdown--;
+        // Aguarda a exibição da mensagem antes de mostrar o countdown
+        setTimeout(() => {
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.style.visibility = 'visible';
             countdownElement.innerText = countdown;
-            if (countdown === 0) {
-                clearInterval(countdownInterval);
-                countdownElement.innerText = '';
-                startGame();
-                betPlacedMessage.style.display = 'none';
-            }
-        }, 1000);
+
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.innerText = countdown;
+                if (countdown === 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.innerText = '';
+                    startGame();
+                    betPlacedMessage.style.display = 'none';
+                }
+            }, 1000);
+        }, 1000); // Exibe o countdown após 1 segundo
     }
 
     function startGame() {
@@ -136,6 +147,13 @@ document.addEventListener('DOMContentLoaded', function() {
         cashoutButton.disabled = false;
         ball.style.visibility = 'visible';
         startTime = Date.now();
+
+        // Ajuste para centralizar o multiplicador no meio do gráfico
+        const chartContainer = document.getElementById('chart-container'); // Certifique-se de ter um contêiner para o gráfico
+        multiplierElement.style.position = 'absolute';
+        multiplierElement.style.left = '50%';
+        multiplierElement.style.top = '50%';
+        multiplierElement.style.transform = 'translate(-50%, -50%)';
 
         interval = setInterval(() => {
             const elapsedTime = (Date.now() - startTime) / 1000;
@@ -159,7 +177,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function cashOut() {
         if (!isPlaying) return;
-        showToast(`Congratulations! You cashed out at ${multiplier.toFixed(2)}x!`);
+
+        // Mostrar a mensagem de Cash Out centralizada na tela
+        const cashOutMessage = document.createElement('div');
+        cashOutMessage.classList.add('cashout-message');
+        cashOutMessage.innerText = `Congratulations! You cashed out at ${multiplier.toFixed(2)}x!`;
+
+        // Estilizar a mensagem para centralizar
+        cashOutMessage.style.position = 'absolute';
+        cashOutMessage.style.top = '50%';
+        cashOutMessage.style.left = '50%';
+        cashOutMessage.style.transform = 'translate(-50%, -50%)';
+        cashOutMessage.style.fontSize = '24px';
+        cashOutMessage.style.fontWeight = 'bold';
+        cashOutMessage.style.color = 'green';
+        cashOutMessage.style.background = 'rgba(0, 0, 0, 0.7)';
+        cashOutMessage.style.padding = '20px';
+        cashOutMessage.style.borderRadius = '10px';
+
+        // Adicionar a mensagem ao body
+        document.body.appendChild(cashOutMessage);
+
+        // Remover a mensagem após 3 segundos
+        setTimeout(() => {
+            cashOutMessage.remove();
+        }, 3000);
+
         cashoutButton.disabled = true;
         gameOver(true);
     }

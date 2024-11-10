@@ -680,7 +680,7 @@ section {
     position: absolute;
     width: 5px;
     height: 5px;
-    background-color: white; /* Cor do rastro */
+    background-color: rgb(255, 0, 0); /* Cor do rastro */
     border-radius: 50%;
     opacity: 0.7;
     pointer-events: none;
