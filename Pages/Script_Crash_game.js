@@ -49,8 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const dragonElement = document.getElementById('dragon');
     const cashoutButton = document.getElementById('cashout-button');
     const toastElement = document.getElementById('toast');
-    const dragonTrail = document.getElementById('dragon-trail'); // Elemento do rastro
-
     let animationRunning = false;
     let multiplier = 0.00;
     let isPlaying = false;
@@ -59,19 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const maxMultiplier = 100.00;
     const stopAtY = 500; // Define o valor de Y para parar a bolinha (ajuste conforme necessário)
     let startTime;
-
-    function createTrail(x, y) {
-        const trail = document.createElement('div');
-        trail.classList.add('trail');
-        trail.style.left = `${x}px`;
-        trail.style.top = `${y}px`;
-        dragonTrail.appendChild(trail);
-
-        // Remove o rastro após um tempo para evitar acúmulo de elementos
-        setTimeout(() => {
-            trail.remove();
-        }, 10500); // O rastro vai desaparecer após 10.5 segundos
-    }
 
     function calculateY(x) {
         return Math.pow(x, 3) / 1000;
@@ -89,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // A largura máxima do gráfico, que é a largura da janela
         const maxX = window.innerWidth;
-
         function animate() {
             x += speed;
             y = calculateY(x); // A posição vertical da bolinha
@@ -100,9 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             ball.style.transform = `translate(${x * 10}px, ${-y}px)`; // Move a bolinha
-
-            // Cria o rastro vermelho
-            createTrail(x * 10, -y);
 
             if (x * 10 < maxX && y < window.innerHeight) {
                 requestAnimationFrame(animate);
@@ -203,7 +184,9 @@ document.addEventListener('DOMContentLoaded', function () {
             cashOutMessage.remove();
         }, 3000);
 
+        // Apenas desativa o botão de cashout, mas não interrompe a animação
         cashoutButton.disabled = true;
+        // O multiplicador continuará, pois ele não é interrompido aqui
         gameOver(true);
     }
 

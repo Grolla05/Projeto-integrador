@@ -720,7 +720,10 @@ section {
 
 #buttons {
     position: absolute;
-    margin-top: 20px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
 }
 
 button {
@@ -784,8 +787,10 @@ button:hover:not(:disabled) {
     border: 2px solid #253C8E;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    margin: 10px 0;
+    margin: 10px auto; /* Centraliza horizontalmente */
     box-sizing: border-box;
+    display: block; /* Garante que o elemento seja um bloco */
+    transition: border-color 0.3s; /* Animação suave ao focar */
 }
 
 #bet-amount:focus {
