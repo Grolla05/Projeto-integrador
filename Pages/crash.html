@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crash</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styless-Crash.css">
 </head>
 
@@ -86,24 +87,25 @@
     </div>
     <main>
         <section>
-            <!-- Histórico dos últimos Crash -->
-            <div id="crash-history">
-                <h3>Últimos Crashs</h3>
-                <div id="history"></div> <!-- Onde o histórico será exibido -->
-            </div>
             <div id="game-container">
+                <canvas id="myChart" width="750" height="400" style="margin-bottom: 10px;"></canvas>
                 <div id="dragon-trail"></div>
                 <div id="crash-ball"></div>
                 <div id="multiplier">0.00x</div>
                 <div id="countdown">3</div>
                 <div id="bet-placed-message"></div> <!-- Mensagem de Bet Placed -->
                 <div id="buttons">
+                    <input type="number" id="bet-amount" placeholder="Bet Amount" min="1">
                     <button id="bet-button">Bet</button>
                     <button id="cashout-button" disabled>Cash Out</button>
                 </div>
             </div>
             <div id="toast"></div>
-    
+            <!-- Histórico dos últimos Crash -->
+            <div id="crash-history">
+                <h3>Últimos Crashs</h3>
+                <div id="history"></div> <!-- Onde o histórico será exibido -->
+            </div>
         </section>
     </main>
     <script src="Script_Crash_game.js"></script>

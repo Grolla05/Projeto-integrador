@@ -1,3 +1,46 @@
+// Função para o multiplicador baseado no tempo
+function multiplicador(t) {
+    return Math.pow(1.1, t); // Exemplo de crescimento exponencial, onde o multiplicador cresce 10% a cada unidade de tempo
+}
+
+// Configurações do gráfico
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'line', // Tipo de gráfico (linha)
+    data: {
+        labels: [], // Rótulos de tempo (eixo x)
+        datasets: [{
+            label: '', // Nome da função (removido para não exibir legenda)
+            data: [], // Dados para o multiplicador (eixo y)
+            borderColor: 'rgba(75, 192, 192, 1)', // Cor da linha
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de fundo da linha
+            fill: false, // Não preencher abaixo da linha
+            lineTension: 0.1 // Suavização da linha
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false // Desativa a exibição da legenda
+            }
+        },
+        scales: {
+            x: {
+                type: 'linear', // Eixo x é linear
+                position: 'bottom',
+                min: 0, // Valor mínimo no eixo x (tempo)
+                max: 100, // Valor máximo no eixo x (tempo)
+            },
+            y: {
+                beginAtZero: false, // O multiplicador não começa em 0
+                suggestedMin: 1, // O multiplicador começa em 1
+                suggestedMax: Math.pow(1.1, 100), // Estimativa de valor máximo do multiplicador para o tempo 100
+            }
+        }
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const ball = document.getElementById('crash-ball');
     const betButton = document.getElementById('bet-button');
@@ -15,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let countdown = 3;
     const maxMultiplier = 100.00;
     const stopAtY = 500; // Define o valor de Y para parar a bolinha (ajuste conforme necessário)
+    let startTime;
 
     function createTrail(x, y) {
         const trail = document.createElement('div');
@@ -26,7 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remove o rastro após um tempo para evitar acúmulo de elementos
         setTimeout(() => {
             trail.remove();
-        }, 10500); // O rastro vai desaparecer após 0.5 segundos
+        }, 10500); // O rastro vai desaparecer após 10.5 segundos
+    }
+
+    function calculateY(x) {
+        return Math.pow(x, 3) / 1000;
     }
 
     function startAnimation() {
@@ -41,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function animate() {
             x += speed;
-            y = Math.pow(x, 3) / 1000; // A posição vertical da bolinha
+            y = calculateY(x); // A posição vertical da bolinha
             ball.style.transform = `translate(${x * 10}px, ${-y}px)`; // Move a bolinha
 
             // Cria o rastro vermelho
@@ -83,19 +131,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startGame() {
         isPlaying = true;
-        multiplier = 0.00;
+        multiplier = 1.00;
         multiplierElement.innerText = `${multiplier.toFixed(2)}x`;
         cashoutButton.disabled = false;
         ball.style.visibility = 'visible';
+        startTime = Date.now();
 
         interval = setInterval(() => {
-            multiplier += 0.01;
+            const elapsedTime = (Date.now() - startTime) / 1000;
+            multiplier = multiplicador(elapsedTime);
             multiplierElement.innerText = `${multiplier.toFixed(2)}x`;
             dragonElement.style.bottom = `${20 + multiplier * 5}%`;
             dragonElement.style.transform = `translate(-50%, 1) rotate(${multiplier * 3}deg)`;
 
+            // Atualiza o gráfico em tempo real
+            myChart.data.datasets[0].data.push(multiplier);
+            myChart.data.labels.push(elapsedTime);
+            myChart.update();
+
             // A probabilidade de crash pode ser ajustada aqui
-            let crashProbability = multiplier < 1 ? (1 - multiplier) : 0.01;
+            let crashProbability = multiplier > 1 ? (1 / multiplier) : 0.01;
             if (Math.random() < crashProbability || multiplier >= maxMultiplier) {
                 setTimeout(() => gameOver(false), Math.random() * 2000 + 3000);
             }
@@ -106,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isPlaying) return;
         showToast(`Congratulations! You cashed out at ${multiplier.toFixed(2)}x!`);
         cashoutButton.disabled = true;
+        gameOver(true);
     }
 
     function gameOver(cashedOut) {

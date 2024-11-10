@@ -776,6 +776,24 @@ button:hover:not(:disabled) {
     z-index: 10; /* Certifica-se de que o texto fique acima de outros elementos */
 }
 
+#bet-amount {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #253C8E;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+#bet-amount:focus {
+    border-color: #1F2840;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 
 footer {
     background-color: #1F2840;
