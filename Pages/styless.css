@@ -176,7 +176,7 @@ header {
 .modal-login {
     background-color: #444072;
     padding: 30px;
-    border-radius: 25px;
+    border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     width: 300px; /* Definindo uma largura fixa */
@@ -198,7 +198,7 @@ input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border-radius: 15px;
+    border-radius: 5px;
     border: 1px solid #ccc;
 }
 
@@ -448,7 +448,7 @@ input {
     color: #0f0f1f;
     font-weight: bold;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -717,7 +717,7 @@ body {
 .modal {
     background-color: #444072;
     padding: 30px;
-    border-radius: 25px;
+    border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     width: 300px; /* Definindo uma largura fixa */
@@ -739,7 +739,7 @@ input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border-radius: 15px;
+    border-radius: 5px;
     border: 1px solid #ccc;
 }
 
