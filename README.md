@@ -37,27 +37,22 @@
 <p>Para o desenvolvimento da plataforma PUCBET, foram utilizadas as seguintes tecnologias:</p>
 <ul>
   <li><strong>Frontend</strong>: HTML, CSS, JavaScript</li>
-  <li><strong>Frameworks e Bibliotecas</strong>: Bootstrap, Vue.js</li>
-  <li><strong>Backend</strong>: Node.js com Express</li>
-  <li><strong>Banco de Dados</strong>: MongoDB</li>
-  <li><strong>Autenticação e Segurança</strong>: JWT (JSON Web Token) para autenticação e criptografia de dados com bcrypt</li>
-  <li><strong>API de Dados Esportivos</strong>: Utilizamos APIs de terceiros para fornecer informações atualizadas sobre eventos esportivos.</li>
-  <li><strong>Outras Ferramentas</strong>: Git e GitHub para controle de versão e Heroku para hospedagem da aplicação</li>
+  <li><strong>Backend</strong>: JavaScript somente</li>
+  <li><strong>Outras Ferramentas</strong>: Git e GitHub para controle de versão e GitHub Pages para hospedagem da aplicação</li>
 </ul>
 
 <h2 id="arquitetura-do-sistema">Arquitetura do Sistema</h2>
 <p>A plataforma PUCBET foi projetada com uma arquitetura de três camadas:</p>
 <ol>
   <li><strong>Camada de Apresentação</strong>: Interface gráfica onde os usuários interagem com a plataforma.</li>
-  <li><strong>Camada de Lógica de Negócios</strong>: Implementada com Node.js e Express.</li>
-  <li><strong>Camada de Dados</strong>: MongoDB é usado para armazenar dados dos usuários, histórico de apostas, e dados dos eventos esportivos.</li>
+  <li><strong>Camada de Lógica de Negócios</strong>: Implementada com Node.js.</li>
 </ol>
 
 <h2 id="funcionalidades-implementadas">Funcionalidades Implementadas</h2>
 <p>As principais funcionalidades do PUCBET incluem:</p>
 <ul>
   <li><strong>Cadastro e Login de Usuários</strong>: Sistema de autenticação com e-mail e senha.</li>
-  <li><strong>Simulação de Apostas</strong>: Escolha de eventos esportivos e apostas em diferentes modalidades.</li>
+  <li><strong>Simulação de Apostas</strong>: Escolha de apostas em diferentes modalidades.</li>
   <li><strong>Histórico de Apostas e Saldo</strong>: Histórico completo de todas as apostas realizadas pelo usuário.</li>
   <li><strong>Exibição de Resultados e Acompanhamento de Jogos</strong>: Resultados atualizados das partidas em que o usuário realizou apostas.</li>
   <li><strong>Notificações e Alertas</strong>: Notificações de confirmação e erro no processo de apostas.</li>
@@ -73,16 +68,11 @@
 <h3>3. Frontend</h3>
 <p>Layout responsivo desenvolvido com Bootstrap e Vue.js. Painel do usuário com exibição de saldo, histórico de apostas e lista de eventos.</p>
 
-<h3>4. Integração de APIs de Dados Esportivos</h3>
-<p>Obtenção de dados em tempo real de eventos esportivos e integração das APIs na camada de backend para garantir que as informações de odds e resultados estejam sempre atualizadas.</p>
-
 <h2 id="testes">Testes</h2>
 <p>Para garantir a confiabilidade do sistema, foram realizados diversos testes:</p>
 <ul>
-  <li><strong>Testes Unitários</strong>: Implementados para validar funções críticas no backend, como cálculos de odds, autenticação e controle de saldo.</li>
   <li><strong>Testes de Integração</strong>: Validaram a comunicação entre frontend e backend.</li>
   <li><strong>Testes de Interface do Usuário (UI)</strong>: Verificaram a usabilidade e responsividade do layout da plataforma.</li>
-  <li><strong>Testes de Segurança</strong>: Focaram na proteção contra ataques comuns, como injeção de SQL, XSS e CSRF.</li>
 </ul>
 
 <h2 id="conclusao">Conclusão</h2>
