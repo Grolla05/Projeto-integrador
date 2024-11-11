@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Relatório do Projeto - PUCBET</title>
-</head>
-<body>
-
 <h1>Relatório de Projeto - PUCBET</h1>
 
 <p><strong>Disciplina:</strong> PI: Desenvolvimento WEB</p>
