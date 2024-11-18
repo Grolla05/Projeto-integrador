@@ -650,6 +650,27 @@ body {
     margin: 15px; /* Adiciona uma margem para afastar a imagem das bordas */
 }
 
+@media (max-width: 1920px) {
+    .Banner-principal-home {
+        transform: scale(0.4); /* Ajusta a escala para telas menores */
+        right: 180px; /* Ajusta a posição para telas menores */
+    }
+}
+
+@media (max-width: 1440px) {
+    .Banner-principal-home {
+        transform: scale(0.3); /* Ajusta a escala para telas menores */
+        right: 150px; /* Ajusta a posição para telas menores */
+    }
+}
+
+@media (max-width: 1080px) {
+    .Banner-principal-home {
+        transform: scale(0.2); /* Ajusta a escala para telas menores */
+        right: 100px; /* Ajusta a posição para telas menores */
+    }
+}
+
 
 .feature-sections, .additional-sections {
     display: flex;
