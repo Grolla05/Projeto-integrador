@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/styless-Contac.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="navegacao">
+            <nav>
+                <ul>
+                    <ul class="button-container-direita">
+                        <li><button type="button" id="Login"><a href="/Pages/login.html">Login</a></button></li>
+                        <li><button type="button" id="Register"><a href="/Pages/register.html">Register</a></button></li>
+                    </ul>
+                    <ul class="button-container-esquerda">
+                        <li><button type="button" id="Cassino"><a href="/Pages/CassinoHUB.html">Cassino</a></button></li>
+                        <li><button type="button" id="Precisa-ajuda"><a href="/Pages/Contact.html"><b>Precisa de Ajuda?</b></a></button></li>
+                    </ul>
+                    <a href="/">
+                        <img class="Logo-Puc-Bet"
+                            src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
+                            alt="Logo Puc Bet">
+                    </a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <a href="/">
+        <img class="Logo-Puc-Bet-seecion"
+            src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
+            alt="Logo Puc Bet">
+    </a>
+    <li><strong>Suporte Confiável:</strong> Nossa equipe de suporte está sempre pronta para garantir que sua
+        experiência seja perfeita.</li>
+    <div class="form-container">
+        <h1>CONTATE-NOS</h1>
+        <form id="contactForm" method="POST" onsubmit="return handleSubmit(event);">
+            <div class="input-group" id="nome">
+                <input type="text" name="nome" placeholder="Digite seu Nome" required>
+            </div>
+            <div class="input-group" id="email">
+                <input type="email" name="email" placeholder="Digite um e-mail válido" required>
+            </div>
+            <div class="input-group" id="mensagem">
+                <textarea name="mensagem" rows="4" placeholder="Digite sua dúvida aqui" required></textarea>
+            </div>
+            <button type="submit" class="button-submit">Enviar</button>
+        </form>
+    </div>
+    <script src="Script_Suporte.js"></script>
+    <script src="script.js"></script>
+</body>
+
+<footer>
+    <ul class="button-container-footer">
+        <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a href="/Pages/about_us.html">Sobre Nos</a></button></li>
+        <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a href="/Pages/Contact.html">Central de Ajuda</a></button></li>
+    </ul>
+    <p>Contato para SAC: (11) 99999-9999</p>
+    <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
+</footer>
+
+</html>

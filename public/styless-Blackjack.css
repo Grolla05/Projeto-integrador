@@ -1,0 +1,874 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #1F2840;
+    color: white;
+    text-align: center;
+    padding: 35px 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 2px solid #253C8E;
+    /* Adiciona uma linha de contorno azul na parte inferior */
+}
+
+/*Container para estilizar e manter a logo na esquerda logo apos o menu*/
+.Logo-Puc-Bet {
+    transform: scale(0.28);
+    /* Reduz a imagem para 50% do tamanho original */
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    /* Posiciona o container de botões */
+    left: -120px;
+    /* Alinha o container à esquerda */
+    top: -45px;
+    /* Alinha o container ao topo */
+}
+
+/* Container para manter os botões no lado direito */
+.button-container-direita {
+    font-family: 'Poppins', sans-serif;
+    /* Fonte para botões */
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    /* Adiciona espaço ao redor dos botões */
+    position: absolute;
+    /* Posiciona o container de botões */
+    right: 0;
+    /* Alinha o container à direita */
+    top: 5px;
+    /* Alinha o container ao topo */
+    transform: translateY(-10%);
+    /* Ajuste para alinhar exatamente ao centro vertical */
+    list-style-type: none;
+    /* Remove o estilo de lista dos <li> */
+}
+
+/* Remove a formatação padrão de links */
+.button-container-direita a {
+    font-family: 'Poppins', sans-serif;
+    /* Fonte para botões */
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    /* O link ocupará todo o botão */
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilo do botão "Login" */
+#Login {
+    background-color: transparent;
+    /* Sem fundo */
+    color: #ffffff;
+    /* Texto branco */
+    border: none;
+    /* Remove a borda */
+    margin: 0 5px;
+    /* Espaço entre os botões */
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito hover para o botão "Login" */
+#Login:hover {
+    background-color: #037;
+    /* Azul-marinho mais claro ao passar o mouse */
+}
+
+/* Estilo do botão "Register" */
+#Register {
+    background-color: #5D5A88;
+    /* Azul-marinho */
+    color: #ffffff;
+    /* Texto branco */
+    border: none;
+    margin: 0 5px;
+    /* Espaço entre os botões */
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito hover para o botão "Register" */
+#Register:hover {
+    background-color: #037;
+    /* Azul-marinho mais claro ao passar o mouse */
+}
+
+/* Estilo para o botão */
+.open-popup-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #5D5A88;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.open-popup-btn:hover {
+    background-color: #037;
+}
+
+/* Estilo para o fundo do modal */
+.modal-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Estilo para o modal */
+.modal {
+    background-color: #1F2840;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.modal button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #5D5A88;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal button:hover {
+    background-color: #037;
+}
+
+.close-btn {
+    color: #aaa;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close-btn:hover {
+    color: #555;
+}
+
+/* Animação para o modal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Container para manter os botões no lado esquerdo */
+.button-container-esquerda {
+    font-family: 'Poppins', sans-serif;
+    /* Fonte para botões */
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    /* Adiciona espaço ao redor dos botões */
+    position: absolute;
+    /* Posiciona o container de botões */
+    left: 25%;
+    /* Alinha o container à esquerda */
+    top: 5px;
+    /* Alinha o container ao topo */
+    transform: translateY(-10%);
+    /* Ajuste para alinhar exatamente ao centro vertical */
+    list-style-type: none;
+    /* Remove o estilo de lista dos <li> */
+}
+
+/* Remove a formatação padrão de links */
+.button-container-esquerda a {
+    font-family: 'Poppins', sans-serif;
+    /* Fonte para botões */
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    /* O link ocupará todo o botão */
+    width: 100%;
+    height: 100%;
+}
+
+#Cassino:hover {
+    color: #00d7ff;
+    background-color: transparent;
+
+}
+
+#Cassino::after {
+    content: "";
+    /* Necessário para a barra aparecer */
+    position: absolute;
+    /* Permite posicionar a barra em relação ao item */
+    left: 5%;
+    right: 62.5%;
+    bottom: 15%;
+    /* Posiciona a barra na parte inferior do item */
+    height: 3px;
+    /* Altura da barra */
+    background-color: #007bff;
+    /* Cor da barra */
+    transform: scaleX(0);
+    /* Inicialmente, a barra está escondida */
+    transition: transform 0.3s ease;
+    /* Transição suave */
+}
+
+#Cassino:hover::after {
+    transform: scaleX(1);
+    /* A barra aparece quando o mouse passa por cima */
+}
+
+#Precisa-ajuda:hover {
+    color: #00d7ff;
+    background-color: transparent;
+}
+
+#Precisa-ajuda::after {
+    content: "";
+    /* Necessário para a barra aparecer */
+    position: absolute;
+    /* Permite posicionar a barra em relação ao item */
+    left: 40%;
+    right: 10%;
+    bottom: 15%;
+    /* Posiciona a barra na parte inferior do item */
+    height: 3px;
+    /* Altura da barra */
+    background-color: #007bff;
+    /* Cor da barra */
+    transform: scaleX(0);
+    /* Inicialmente, a barra está escondida */
+    transition: transform 0.3s ease;
+    /* Transição suave */
+}
+
+#Precisa-ajuda:hover::after {
+    transform: scaleX(1);
+    /* A barra aparece quando o mouse passa por cima */
+}
+
+/* Estilo do botão "Cassino" */
+#Cassino {
+    background-color: transparent;
+    /* Sem fundo */
+    color: #ffffff;
+    /* Texto branco */
+    border: none;
+    /* Remove a borda */
+    margin: 0 5px;
+    /* Espaço entre os botões */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo do botão "Precisa-ajuda" */
+#Precisa-ajuda {
+    background-color: transparent;
+    /* Azul-marinho */
+    color: #ffffff;
+    /* Texto branco */
+    border: none;
+    margin: 0 5px;
+    /* Espaço entre os botões */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/*Container para estilizar e manter a logo na esquerda logo apos o menu*/
+.Logo-Puc-Bet-sidebar {
+    transform: scale(0.1);
+    /* Reduz a imagem para 50% do tamanho original */
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    /* Posiciona o container de botões */
+    left: -117px;
+    /* Alinha o container à esquerda */
+    top: -57px;
+    /* Alinha o container ao topo */
+}
+
+.sidebar {
+    width: 240px;
+    height: 100vh; /* Ajusta a altura para cobrir toda a tela */
+    background-color: #0f0f1f;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: width 0.3s ease;
+    align-items: flex-start;
+    margin: 0;
+    position: fixed;
+    top: 70px; /* Espaço para o header */
+    bottom: 0; /* A sidebar se estende até o final da tela */
+    overflow-y: auto; /* Adiciona a rolagem vertical */
+    scrollbar-width: thin; /* Define uma barra de rolagem mais fina */
+    scrollbar-color: #00d7ff #0f0f1f; /* Cor da barra de rolagem */
+}
+
+/* Estilos para a barra de rolagem no Chrome */
+.sidebar::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #0f0f1f; /* Cor de fundo da barra */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #00d7ff; /* Cor da barra de rolagem */
+    border-radius: 10px; /* Arredonda as bordas da barra */
+}
+
+/* Estilos para a sidebar colapsada */
+.sidebar.collapsed {
+    width: 70px;
+    overflow-y: auto; /* Permite rolagem mesmo quando a sidebar está colapsada */
+}
+
+.toggle-btn {
+    background-color: transparent;
+    font-size: 20px;
+    color: #C5C1CE;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    left: 2%;
+    /* Ajuste a posição conforme necessário */
+    top: 25px;
+    /* Ajuste a posição conforme necessário */
+}
+
+.logo img {
+    height: 15px;
+    width: 100px;
+    max-width: 100px;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .logo img {
+    opacity: 0;
+}
+
+.bonus-button button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00d7ff;
+    color: #0f0f1f;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar.collapsed .bonus-button button {
+    padding: 10px 0;
+    text-align: center;
+    opacity: 0;
+}
+
+.menu h3 {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .menu h3 {
+    display: none;
+}
+
+.bonus-button button:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
+.menu ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    /* Add transition for opacity */
+}
+
+.menu li:hover {
+    color: #00d7ff;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 18px;
+    transition: margin 0.3s ease;
+}
+
+.text {
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .icon {
+    margin-right: 0;
+}
+
+.sidebar.collapsed .text {
+    color: transparent;
+}
+
+.group-game {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.group-game .PUCBET-icon.expanded {
+    transform: rotate(180deg);
+}
+
+.PUCBET-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.game-list {
+    list-style: none;
+    padding-left: 0;
+    max-height: 0;
+    display: block; /* Padrão: mostrar a lista */
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+}
+
+.game-list.expanded {
+    max-height: 500px; /* Define uma altura máxima quando expandido */
+    padding: 5px 0;
+}
+
+.game-list.hidden {
+    display: none; /* Oculta a lista quando minimizada */
+}
+
+/* Estilos para o grupo */
+.group-Cassino {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Cassino-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.group-Cassino .Cassino-icon.expanded {
+    transform: rotate(180deg); /* Rotaciona a seta ao expandir */
+}
+
+/* Estilos para a lista de jogos do Cassino */
+.Cassino-list {
+    list-style: none;
+    padding-left: 0;
+    max-height: 0; /* Inicialmente colapsada */
+    overflow: hidden; /* Oculta o conteúdo excedente ao colapsar */
+    transition: max-height 0.5s ease, padding 0.3s ease; /* Suaviza a expansão/colapso */
+}
+
+/* Expansão da lista */
+.Cassino-list.expanded {
+    max-height: 1000px; /* Define uma altura máxima ao expandir */
+    padding: 5px 0;
+}
+
+.sidebar-link {
+    text-decoration: none; /* Remove sublinhado */
+    color: inherit; /* Herdar cor do pai (sem cor de link padrão) */
+    display: flex;
+    align-items: center;
+}
+
+/* Opcional: para manter o estilo de hover como nos outros itens */
+.sidebar-link:hover {
+    color: #fff; /* Cor do texto ao passar o mouse, ajustável */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 0px;
+    /* Adiciona espaço equivalente à altura do header */
+    background-color: #1F2840;
+    display: flex;
+    min-height: 100vh;
+    /* Garante que o body ocupe pelo menos a altura total da tela */
+    flex-direction: column;
+    /* Alinha os elementos verticalmente */
+    height: 100vh;
+    margin: 0;
+    transition: background 0.2s linear;
+    background-size: cover;
+    font-weight: bold;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 16px;   
+}
+
+h1{
+    font-family: 'Muli', sans-serif;
+    font-size: 2.5em;
+    color: #fff;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+button {
+    color: black;
+    background: goldenrod;
+    padding: 3px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 2px;
+    margin: 2px;
+}
+
+.container {
+    background-color:rgb(51, 65, 29);
+    margin-top: 1%;
+    margin-left: 18%;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 11, 1fr;
+    grid-template-rows: repeat(9, 1fr);
+    width: 70%;
+    height: 90vh;
+}
+
+.player {
+    display: grid;
+    grid-row: 1/2;
+    grid-column: 1/11;
+    grid-template-columns: 11, 1fr;
+    grid-template-rows: repeat(1, 1fr);
+    margin: .5%;
+    border-radius: 5px;
+    border: none;
+}
+
+.player-stats {
+    grid-column: 1/11;
+    grid-row: 1;
+    background-color:#333;
+    justify-content: center;
+    text-align: center;
+    margin-left: 38%;
+    margin-right: 38%;
+    border-radius: 5%;
+}
+
+#dealer-title {
+    font-size: 26px;
+}
+
+#player-title {
+    font-size: 26px;
+}
+
+.player-cards {
+    grid-row: 2;
+    grid-column: 1/11;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 2px;
+    column-gap: 2px;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.player-cards img {
+    max-width: 7vmax;
+}
+
+.buttonarea {
+    grid-row: 6;
+    grid-column: 1/11;
+    margin: .25%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.buttons2 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.stats {
+    display: flex;
+    grid-row: 7/8;
+    grid-column: 1/11;
+    column-gap: 10%;
+    justify-content: center;
+    text-align:left;
+    flex-wrap: wrap;
+    background-color: rgb(0, 0, 0);
+    opacity: 80%;
+    margin: 0.5%;
+}
+
+/*.stats-leftCol {
+}
+
+.stats-rightCol {
+}*/
+
+.dealer {
+    display: grid;
+    grid-row: 4/5;
+    grid-column: 1/11;
+    grid-template-columns: 11, 1fr;
+    grid-template-rows: repeat(1, 1fr);
+    margin: .5%;
+}
+
+.dealer-stats {
+    grid-column: 1/11;
+    grid-row: 1;
+    background-color:#333;
+    margin-left: 38%;
+    margin-right: 38%;
+    border-radius: 5%;
+}
+
+.dealer-cards {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 2px;
+    column-gap: 2px;
+    justify-content: center;
+    grid-row: 2;
+    grid-column: 1/11;
+    background-color: transparent;
+}
+
+.dealer-cards img { 
+    max-width: 7vmax;
+}
+
+#message-el {
+    grid-row: 3;
+    grid-column: 1/11;
+    font-size: 22px;
+    font-style: italic;
+    display:grid;
+    align-items: center;
+    background: whitesmoke;
+    color: black;
+    margin: .5%;
+    margin-left: 38%;
+    margin-right: 38%;
+    border-radius: 5%;
+}
+
+#pcards0 {
+    max-width: 7vmax;
+    height: 10vmin;
+}
+
+#hitbtn {
+    background:darkgray;
+}
+
+#standbtn {
+    background:darkgray;
+}
+
+#doublebtn {
+    background: darkgray;
+}
+
+#pcards1 {
+    max-width: 1fr;
+    height: auto;
+}
+
+#pcards2 {
+    max-width: 1fr;
+    height: auto;
+}
+
+#pcards3 {
+    max-width: 1fr;
+    height: auto;
+}
+
+#pcards4 {
+    max-width: 1fr;
+    height: auto;
+}
+
+#pcards5 {
+    max-width: 1fr;
+    height: auto;
+}
+
+#pcards6 {
+    max-width: 1fr;
+    height: auto;
+}
+
+#pcards7 {
+    max-width: 1fr;
+    height: auto;
+}
+
+#pcards8 {
+    max-width: 1fr;
+    height: auto;
+}
+
+#pcards9 {
+    max-width: 1fr;
+    height: auto;
+}
+
+#pcards10 {
+    max-width: 1fr;
+    height: auto;
+}
+
+footer {
+    background-color: #1F2840;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: fixed;
+    bottom: -100px; /* Inicialmente fora da tela */
+    width: 100%;
+    border-top: 2px solid #253C8E;
+    transition: bottom 0.5s ease; /* Animação suave ao aparecer */
+    visibility: hidden; /* Oculto inicialmente */
+}
+
+.button-container-footer {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    list-style-type: none;
+}
+
+.button-container-footer a {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#Central-Ajuda {
+    background-color: #5D5A88;
+    color: #ffffff;
+    border: none;
+    margin: 0 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#Central-Ajuda:hover,
+#Sobre-nos:hover {
+    background-color: #037;
+}
+
+#Sobre-nos {
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    margin: 0 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

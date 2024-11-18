@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette</title>
+    <link rel="stylesheet" href="/styless-Roulette.css">
+</head>
+
+<body>
+    <header>
+        <div id="navegacao">
+            <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+            <nav>
+                <ul>
+                    <ul class="button-container-direita">
+                        <li>
+                            <button type="button" id="Login"><a href="/Login">Login</a></button>
+                        </li>
+                        <li><!-- Botão para abrir o pop-up -->
+                            <button class="open-popup-btn" onclick="openPopup()">Registrar-se</button>
+
+                            <!-- Modal de registro -->
+                            <div class="modal-bg" id="modalBg">
+                                <div class="modal">
+                                    <span class="close-btn" onclick="closePopup()">×</span>
+                                    <h2>Crie sua Conta</h2>
+                                    <form>
+                                        <input type="text" placeholder="Nome Completo" required>
+                                        <input type="email" placeholder="E-mail" required>
+                                        <input type="password" placeholder="Senha" required>
+                                        <button type="submit">Registrar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="button-container-esquerda">
+                        <li><button type="button" id="Cassino"><a href="/Cassino">Cassino</a></button></li>
+                        <li><button type="button" id="Precisa-ajuda"><a href="/Pages/Contact.html"><b>Precisa de Ajuda?</b></a></button></li>
+                    </ul>
+                    <a href="/">
+                        <img class="Logo-Puc-Bet"
+                            src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
+                            alt="Logo Puc Bet">
+                    </a>
+        </div>
+    </header>
+    <div class="sidebar">
+        <div class="bonus-button">
+            <button class="open-popup-btn" onclick="openPopupRegister()"><img class="Logo-Puc-Bet-sidebar"
+                    id="Logo-Puc-Bet-sidebar"
+                    src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo-Sem-Nome.png?raw=true">..
+                50 PUCOINS Grátis</button>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><span class="icon">🎮</span> <span class="text">Jogado Recentemente</span></li>
+            </ul>
+            <h3 onclick="toggleGamelist()" class="group-game">
+                Originais da PUCBET
+                <span class="PUCBET-icon">▼</span>
+            </h3>
+            <ul class="game-list">
+                <li><a class="sidebar-link" href="/Pages/crash.html"><span class="icon">⚡</span><span class="text">Crash</span></a></li>
+            </ul>
+        </div>
+        <div class="menu">
+            <h3 onclick="toggleCassinolist()" class="group-Cassino">
+                Cassino
+                <span class="Cassino-icon">▼</span>
+            </h3>
+            <ul class="Cassino-list">
+                <li><a class="sidebar-link" href="/Pages/Blackjack.html"><span class="icon">🃏</span> <span class="text">Blackjack</span></a></li>
+                <li><a class="sidebar-link" href="/Pages/Roulette.html"><span class="icon">🎡</span> <span class="text">Roleta</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <main>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <h1>Roulette game</h1>
+        <meta name="title" content="Javascript Roulette">
+        <meta name="description" content="A fully functioning roulette game made using Javascript and CSS">
+        <meta name="author" content="ozboware">
+        <meta property="og:url" content="/">
+        <meta property="og:title" content="Javascript Roulette">
+        <meta property="og:description" content="A fully functioning roulette game made using Javascript and CSS">
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+</main>
+<script src="/Script-Roulette-game.js"></script>
+<script src="/script.js"></script>
+<footer>
+    <ul class="button-container-footer">
+        <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a href="/Pages/about_us.html">Sobre Nos</a></button></li>
+        <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a href="/Pages/Contact.html">Central de Ajuda</a></button></li>
+    </ul>
+    <p>Contato para SAC: (11) 99999-9999</p>
+    <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
+</footer>
+
+</html>
