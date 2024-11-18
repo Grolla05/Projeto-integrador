@@ -145,7 +145,7 @@ header {
     position: absolute; /* Permite posicionar a barra em relação ao item */
     left: 40%;
     right: 10%;
-    bottom: 5%; /* Posiciona a barra na parte inferior do item */
+    bottom: 30%; /* Posiciona a bar  ra na parte inferior do item */
     height: 3px; /* Altura da barra */
     background-color: #007bff; /* Cor da barra */
     transform: scaleX(0); /* Inicialmente, a barra está escondida */
