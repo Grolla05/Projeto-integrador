@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="styless.css">
+    <link rel="stylesheet" href="/styless.css">
 </head>
 
 <body>
@@ -18,19 +18,15 @@
                         <li>
                             <button class="open-popup-btn-login" onclick="openPopupLogin()">Entrar</button>
                         </li>
-                        <li><!-- Botão para abrir o pop-up -->
+                        <li>
                             <button class="open-popup-btn" onclick="openPopupRegister()">Registrar-se</button>
                         </li>
                     </ul>
                     <ul class="button-container-esquerda">
-                        <li><button type="button" id="Cassino"><a href="http://127.0.0.1:5500/Pages/CassinoHUB.html">Cassino</a></button>
-                        </li>
-                        <li><button type="button" id="Precisa-ajuda"><a
-                                    href="http://127.0.0.1:5500/Pages/Contact.html"><b>Precisa de
-                                        Ajuda?</b></a></button>
-                        </li>
+                        <li><button type="button" id="Cassino"><a href="/CassinoHUB">Cassino</a></button></li>
+                        <li><button type="button" id="Precisa-ajuda"><a href="/Contact"><b>Precisa de Ajuda?</b></a></button></li>
                     </ul>
-                    <a href="http://127.0.0.1:5500/Pages/home.html">
+                    <a href="/">
                         <img class="Logo-Puc-Bet"
                             src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
                             alt="Logo Puc Bet">
@@ -40,8 +36,8 @@
     </header>
     <div class="sidebar">
         <div class="bonus-button">
-            <button class="open-popup-btn" onclick="openPopupRegister()"><img class="Logo-Puc-Bet-sidebar"
-                    id="Logo-Puc-Bet-sidebar"
+            <button class="open-popup-btn" onclick="openPopupRegister()">
+                <img class="Logo-Puc-Bet-sidebar" id="Logo-Puc-Bet-sidebar"
                     src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo-Sem-Nome.png?raw=true">..
                 50 PUCOINS Grátis</button>
         </div>
@@ -54,8 +50,7 @@
                 <span class="PUCBET-icon">▼</span>
             </h3>
             <ul class="game-list">
-                <li><a class="sidebar-link" href="http://127.0.0.1:5500/pages/crash.html"><span
-                            class="icon">⚡</span><span class="text">Crash</a></span></li>
+                <li><a class="sidebar-link" href="/CassinoHUB"><span class="icon">⚡</span><span class="text">Crash</a></span></li>
             </ul>
         </div>
         <div class="menu">
@@ -64,10 +59,8 @@
                 <span class="Cassino-icon">▼</span>
             </h3>
             <ul class="Cassino-list">
-                <li><a class="sidebar-link" href="http://127.0.0.1:5500/Pages/Blackjack.html"><span
-                            class="icon">🃏</span> <span class="text">Blackjack</a></span></li>
-                <li><a class="sidebar-link" href="http://127.0.0.1:5500/Pages/Roulette.html"><span
-                            class="icon">🎡</span> <span class="text">Roleta</a></span></li>
+                <li><a class="sidebar-link" href="/CassinoHUB"><span class="icon">🃏</span> <span class="text">Blackjack</a></span></li>
+                <li><a class="sidebar-link" href="/CassinoHUB"><span class="icon">🎡</span> <span class="text">Roleta</a></span></li>
             </ul>
         </div>
     </div>
@@ -82,7 +75,7 @@
                 <div class="modal-Bg-register" id="modalBg-register">
                     <div class="modal">
                         <span class="close-btn" onclick="closePopupRegister()">×</span>
-                        <a href="http://127.0.0.1:5500/Pages/home.html">
+                        <a href="/">
                             <img class="Logo-Puc-Bet-register"
                                 src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
                                 alt="Logo Puc Bet">
@@ -101,8 +94,8 @@
                 <!-- Modal de Login -->
                 <div class="modal-Bg-login" id="modalBg-login">
                     <div class="modal-login">
-                        <span class="close-btn  " onclick="closePopupLogin()">×</span>
-                        <a href="http://127.0.0.1:5500/Pages/home.html">
+                        <span class="close-btn" onclick="closePopupLogin()">×</span>
+                        <a href="/">
                             <img class="Logo-Puc-Bet-register"
                                 src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
                                 alt="Logo Puc Bet">
@@ -140,7 +133,7 @@
                 <div class="additional-card-cassino">
                     <h2>🎰 Cassino</h2>
                     <p>Explore o cassino com diversos jogos disponíveis!</p>
-                    <a href="http://127.0.0.1:5500/Pages/CassinoHUB.html" class="cta-button">IR AO CASSINO</a>
+                    <a href="/CassinoHUB" class="cta-button">IR AO CASSINO</a>
                 </div>
                 <div class="additional-card">
                     <h2>⚽ Esportes</h2>
@@ -152,12 +145,8 @@
     </main>
     <footer>
         <ul class="button-container-footer">
-            <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a
-                        href="http://127.0.0.1:5500/Pages/about_us.html">Sobre
-                        Nos</a></button></li>
-            <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a
-                        href="http://127.0.0.1:5500/Pages/Contact.html">Central de Ajuda</a></button>
-            </li>
+            <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a href="/About">Sobre Nos</a></button></li>
+            <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a href="/Contact">Central de Ajuda</a></button></li>
         </ul>
         <p>Contato para SAC: (11) 99999-9999</p>
         <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
