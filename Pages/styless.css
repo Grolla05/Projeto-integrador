@@ -988,3 +988,18 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+.about-us-page footer {
+    position: static;  
+    bottom: auto;  
+}
+
+.about-us-page body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+.about-us-page main {
+    flex: 1;
+}
