@@ -7,6 +7,7 @@ const port = 3000;
 
 // Configurar o body-parser para lidar com dados de formulários
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // Adicionado para lidar com JSON
 
 // Configurar a conexão com o banco de dados
 const db = mysql.createConnection({
@@ -23,7 +24,7 @@ db.connect((err) => {
     console.log('Conectado ao banco de dados MySQL');
 });
 
-// Servir arquivos estáticos (HTML, CSS, JS) (inicializar digitando no terminal: node server.js)
+// Servir arquivos estáticos (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
@@ -44,6 +45,10 @@ app.get('/About', (req, res) => {
 
 app.get('/404', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
+app.get('/Roulette', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'Roulette.html'));
 });
 
 app.get('/Blackjack', (req, res) => {
@@ -75,6 +80,18 @@ app.post('/login', (req, res) => {
         } else {
             res.send('Usuário ou senha incorretos');
         }
+    });
+});
+
+// Rota para salvar mensagem de contato
+app.post('/contact', (req, res) => {
+    const { nome, email, mensagem } = req.body;
+    const query = 'INSERT INTO mensagens (nome, email, mensagem) VALUES (?, ?, ?)';
+    db.query(query, [nome, email, mensagem], (err, result) => {
+        if (err) {
+            return res.status(500).send('Erro ao salvar mensagem');
+        }
+        res.send('Mensagem enviada com sucesso');
     });
 });
 
