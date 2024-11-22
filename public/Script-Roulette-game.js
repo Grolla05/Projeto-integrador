@@ -1,4 +1,20 @@
-let bankValue = 1000;
+// Função para obter o valor de puccoins do usuário logado
+function getUserPuccoins() {
+    return fetch('/getPuccoins')
+        .then(response => response.json())
+        .then(data => data.puccoins)
+        .catch(error => {
+            console.error('Erro ao obter puccoins:', error);
+            return 0; // Retorna 0 em caso de erro
+        });
+}
+
+// Atualizar bankValue com o valor de puccoins do usuário logado
+getUserPuccoins().then(puccoins => {
+    bankValue = puccoins;
+    startGame();
+});
+
 let currentBet = 0;
 let wager = 5;
 let lastWager = 0;
@@ -13,21 +29,24 @@ let container = document.createElement('div');
 container.setAttribute('id', 'container');
 document.body.append(container);
 
-startGame();
 
 let wheel = document.getElementsByClassName('wheel')[0];
 let ballTrack = document.getElementsByClassName('ballTrack')[0];
 
 function resetGame(){
-	bankValue = 1000;
-	currentBet = 0;
-	wager = 5;
-	bet = [];
-	numbersBet = [];
-	previousNumbers = [];
-	document.getElementById('betting_board').remove();
-	document.getElementById('notification').remove();
-	buildBettingBoard();
+	getUserPuccoins().then(puccoins => {
+		bankValue = puccoins;
+		currentBet = 0;
+		wager = 5;
+		bet = [];
+		numbersBet = [];
+		previousNumbers = [];
+		document.getElementById('betting_board').remove();
+		if (document.getElementById('notification')) {
+			document.getElementById('notification').remove();
+		}
+		buildBettingBoard();
+	});
 }
 
 function startGame(){
