@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql');
+const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
@@ -9,19 +9,27 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Adicionado para lidar com JSON
 
-// Configurar a conexão com o banco de dados
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123',
-    database: 'projeto_integrador'
-});
-
-db.connect((err) => {
+// Configurar a conexão com o banco de dados SQLite
+const db = new sqlite3.Database('./projeto_integrador.db', (err) => {
     if (err) {
+        console.error(err.message);
         throw err;
     }
-    console.log('Conectado ao banco de dados MySQL');
+    console.log('Conectado ao banco de dados SQLite');
+
+    // Criar a tabela de usuários se não existir
+    db.run(`CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        password TEXT NOT NULL,
+        puccoins INTEGER DEFAULT 1000
+    )`, (err) => {
+        if (err) {
+            console.error('Erro ao criar tabela de usuários', err.message);
+        } else {
+            console.log('Tabela de usuários criada ou já existe');
+        }
+    });
 });
 
 // Servir arquivos estáticos (HTML, CSS, JS)
@@ -58,8 +66,8 @@ app.get('/Blackjack', (req, res) => {
 // Rota para registrar um novo usuário
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
-    const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
-    db.query(query, [username, password], (err, result) => {
+    const query = 'INSERT INTO users (username, password, puccoins) VALUES (?, ?, 1000)';
+    db.run(query, [username, password], function(err) {
         if (err) {
             return res.status(500).send('Erro ao registrar usuário');
         }
@@ -71,11 +79,11 @@ app.post('/register', (req, res) => {
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
-    db.query(query, [username, password], (err, results) => {
+    db.get(query, [username, password], (err, row) => {
         if (err) {
             return res.status(500).send('Erro ao fazer login');
         }
-        if (results.length > 0) {
+        if (row) {
             res.send('Login bem-sucedido');
         } else {
             res.send('Usuário ou senha incorretos');
@@ -87,7 +95,7 @@ app.post('/login', (req, res) => {
 app.post('/contact', (req, res) => {
     const { nome, email, mensagem } = req.body;
     const query = 'INSERT INTO mensagens (nome, email, mensagem) VALUES (?, ?, ?)';
-    db.query(query, [nome, email, mensagem], (err, result) => {
+    db.run(query, [nome, email, mensagem], function(err) {
         if (err) {
             return res.status(500).send('Erro ao salvar mensagem');
         }
