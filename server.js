@@ -2,12 +2,21 @@ const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const app = express();
 const port = 3000;
 
 // Configurar o body-parser para lidar com dados de formulários
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Adicionado para lidar com JSON
+
+// Configurar o express-session
+app.use(session({
+    secret: 'e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8', // Troque por um segredo seguro
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Defina como true se estiver usando HTTPS
+}));
 
 // Configurar a conexão com o banco de dados SQLite
 const db = new sqlite3.Database('./projeto_integrador.db', (err) => {
@@ -85,6 +94,8 @@ app.post('/login', (req, res) => {
             return res.status(500).send('Erro ao fazer login');
         }
         if (row) {
+            req.session.userId = row.id;
+            req.session.username = row.username;
             res.send('Login bem-sucedido');
         } else {
             res.send('Usuário ou senha incorretos');
@@ -92,15 +103,27 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Rota para salvar mensagem de contato
-app.post('/contact', (req, res) => {
-    const { nome, email, mensagem } = req.body;
-    const query = 'INSERT INTO mensagens (nome, email, mensagem) VALUES (?, ?, ?)';
-    db.run(query, [nome, email, mensagem], function(err) {
+// Middleware para verificar se o usuário está logado
+function isAuthenticated(req, res, next) {
+    if (req.session.userId) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+}
+
+// Exemplo de rota protegida
+app.get('/profile', isAuthenticated, (req, res) => {
+    res.send(`Bem-vindo, ${req.session.username}`);
+});
+
+// Rota para logout
+app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
         if (err) {
-            return res.status(500).send('Erro ao salvar mensagem');
+            return res.status(500).send('Erro ao fazer logout');
         }
-        res.send('Mensagem enviada com sucesso');
+        res.send('Logout bem-sucedido');
     });
 });
 
