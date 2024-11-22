@@ -21,6 +21,7 @@ const db = new sqlite3.Database('./projeto_integrador.db', (err) => {
     db.run(`CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT NOT NULL,
+        email TEXT NOT NULL,
         password TEXT NOT NULL,
         puccoins INTEGER DEFAULT 1000
     )`, (err) => {
@@ -65,9 +66,9 @@ app.get('/Blackjack', (req, res) => {
 
 // Rota para registrar um novo usuário
 app.post('/register', (req, res) => {
-    const { username, password } = req.body;
-    const query = 'INSERT INTO users (username, password, puccoins) VALUES (?, ?, 1000)';
-    db.run(query, [username, password], function(err) {
+    const { username, email, password } = req.body;
+    const query = 'INSERT INTO users (username, email, password, puccoins) VALUES (?, ?, ?, 1000)';
+    db.run(query, [username, email, password], function(err) {
         if (err) {
             return res.status(500).send('Erro ao registrar usuário');
         }
@@ -77,9 +78,9 @@ app.post('/register', (req, res) => {
 
 // Rota para login de usuário
 app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
-    db.get(query, [username, password], (err, row) => {
+    const { email, password } = req.body;
+    const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
+    db.get(query, [email, password], (err, row) => {
         if (err) {
             return res.status(500).send('Erro ao fazer login');
         }

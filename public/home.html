@@ -81,13 +81,45 @@
                                 alt="Logo Puc Bet">
                         </a>
                         <h2 class="h2-registre-se">Faça login na sua conta da PUC BET </h2>
-                        <form>
-                            <input type="text" placeholder="Nome Completo" required>
-                            <input type="email" placeholder="E-mail" required>
-                            <input type="password" placeholder="Senha" required>
-                            <input type="password" placeholder="Confirme sua Senha" required>
+                        <form id="registerForm">
+                            <input type="text" id="username" placeholder="Nome Completo" required>
+                            <input type="email" id="email" placeholder="E-mail" required>
+                            <input type="password" id="password" placeholder="Senha" required>
+                            <input type="password" id="confirmPassword" placeholder="Confirme sua Senha" required>
                             <button class="submit" type="submit">Registrar</button>
                         </form>
+                        <script>
+                            document.getElementById('registerForm').addEventListener('submit', function(event) {
+                                event.preventDefault();
+                                const username = document.getElementById('username').value;
+                                const email = document.getElementById('email').value;
+                                const password = document.getElementById('password').value;
+                                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                                if (password !== confirmPassword) {
+                                    alert('As senhas não coincidem');
+                                    return;
+                                }
+
+                                fetch('/register', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ username, email, password })
+                                })
+                                .then(response => response.text())
+                                .then(data => {
+                                    alert(data);
+                                    if (data === 'Usuário registrado com sucesso') {
+                                        closePopupRegister();
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Erro:', error);
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <button class="open-popup-btn-login" onclick="openPopupLogin()">Entrar</button>
@@ -106,6 +138,31 @@
                             <input type="password" placeholder="Senha" required>
                             <button class="submit-login" type="submit">Logar-se</button>
                         </form>
+                    <script>
+                        document.querySelector('.modal-login form').addEventListener('submit', function(event) {
+                            event.preventDefault();
+                            const email = event.target.querySelector('input[type="email"]').value;
+                            const password = event.target.querySelector('input[type="password"]').value;
+
+                            fetch('/login', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ email: email, password: password })
+                            })
+                            .then(response => response.text())
+                            .then(data => {
+                                alert(data);
+                                if (data === 'Login bem-sucedido') {
+                                    closePopupLogin();
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erro:', error);
+                            });
+                        });
+                    </script>
                     </div>
                 </div>
                 <img class="Banner-principal-home" src="/Pages/images/Cassino Chips blue.png">
