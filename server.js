@@ -73,15 +73,39 @@ app.get('/Blackjack', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'Blackjack.html'));
 });
 
+// Rota para verificar a disponibilidade de nome de usuário e email
+app.post('/check-availability', (req, res) => {
+    const { username, email } = req.body;
+    const query = 'SELECT * FROM users WHERE username = ? OR email = ?';
+    db.get(query, [username, email], (err, row) => {
+        if (err) {
+            return res.status(500).send('Erro ao verificar disponibilidade');
+        }
+        if (row) {
+            return res.status(400).send('Nome de usuário ou email já estão em uso');
+        }
+        res.send('Disponível');
+    });
+});
+
 // Rota para registrar um novo usuário
 app.post('/register', (req, res) => {
     const { username, email, password } = req.body;
-    const query = 'INSERT INTO users (username, email, password, puccoins) VALUES (?, ?, ?, 1000)';
-    db.run(query, [username, email, password], function(err) {
+    const checkQuery = 'SELECT * FROM users WHERE username = ? OR email = ?';
+    db.get(checkQuery, [username, email], (err, row) => {
         if (err) {
-            return res.status(500).send('Erro ao registrar usuário');
+            return res.status(500).send('Erro ao verificar disponibilidade');
         }
-        res.send('Usuário registrado com sucesso');
+        if (row) {
+            return res.status(400).send('Nome de usuário ou email já estão em uso');
+        }
+        const query = 'INSERT INTO users (username, email, password, puccoins) VALUES (?, ?, ?, 1000)';
+        db.run(query, [username, email, password], function(err) {
+            if (err) {
+                return res.status(500).send('Erro ao registrar usuário');
+            }
+            res.send('Usuário registrado com sucesso');
+        });
     });
 });
 
@@ -111,6 +135,43 @@ function isAuthenticated(req, res, next) {
         res.redirect('/');
     }
 }
+
+app.get('/getPuccoins', (req, res) => {
+    if (!req.session.userId) {
+        return res.status(401).send('Usuário não autenticado');
+    }
+
+    const query = 'SELECT puccoins FROM users WHERE id = ?';
+    db.get(query, [req.session.userId], (err, row) => {
+        if (err) {
+            return res.status(500).send('Erro ao obter puccoins');
+        }
+        res.json({ puccoins: row.puccoins });
+    });
+});
+
+app.post('/updatePuccoins', (req, res) => {
+    const { puccoins } = req.body;
+    const userId = req.session.userId; // Usando o ID do usuário da sessão
+
+    if (typeof puccoins !== 'number') {
+        return res.status(400).json({ success: false, message: 'Valor de puccoins inválido' });
+    }
+
+    const query = 'UPDATE users SET puccoins = ? WHERE id = ?';
+    db.run(query, [puccoins, userId], function(err) {
+        if (err) {
+            console.error('Erro ao atualizar puccoins:', err);
+            return res.status(500).json({ success: false, message: 'Erro ao atualizar puccoins' });
+        }
+
+        if (this.changes === 0) {
+            return res.status(404).json({ success: false, message: 'Usuário não encontrado' });
+        }
+
+        res.json({ success: true, message: 'Puccoins atualizados com sucesso' });
+    });
+});
 
 // Exemplo de rota protegida
 app.get('/profile', isAuthenticated, (req, res) => {
