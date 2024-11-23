@@ -150,6 +150,29 @@ app.get('/getPuccoins', (req, res) => {
     });
 });
 
+app.post('/updatePuccoins', (req, res) => {
+    const { puccoins } = req.body;
+    const userId = req.session.userId; // Usando o ID do usuário da sessão
+
+    if (typeof puccoins !== 'number') {
+        return res.status(400).json({ success: false, message: 'Valor de puccoins inválido' });
+    }
+
+    const query = 'UPDATE users SET puccoins = ? WHERE id = ?';
+    db.run(query, [puccoins, userId], function(err) {
+        if (err) {
+            console.error('Erro ao atualizar puccoins:', err);
+            return res.status(500).json({ success: false, message: 'Erro ao atualizar puccoins' });
+        }
+
+        if (this.changes === 0) {
+            return res.status(404).json({ success: false, message: 'Usuário não encontrado' });
+        }
+
+        res.json({ success: true, message: 'Puccoins atualizados com sucesso' });
+    });
+});
+
 // Exemplo de rota protegida
 app.get('/profile', isAuthenticated, (req, res) => {
     res.send(`Bem-vindo, ${req.session.username}`);

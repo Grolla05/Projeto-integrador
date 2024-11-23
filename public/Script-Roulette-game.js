@@ -9,13 +9,32 @@ function getUserPuccoins() {
             return 0; // Retorna 0 em caso de erro
         });
 }
+// Função para atualizar o valor de puccoins do usuário logado na base de dados
+function updateUserPuccoins(puccoins) {
+    return fetch('/updatePuccoins', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ puccoins: puccoins })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Puccoins atualizados com sucesso');
+        } else {
+            console.error('Erro ao atualizar puccoins:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao atualizar puccoins:', error);
+    });
+}
 
 // Atualizar bankValue com o valor de puccoins do usuário logado
 getUserPuccoins().then(puccoins => {
     bankValue = puccoins;
-    startGame();
 });
-
 let currentBet = 0;
 let wager = 5;
 let lastWager = 0;
@@ -30,24 +49,23 @@ let container = document.createElement('div');
 container.setAttribute('id', 'container');
 document.body.append(container);
 
+startGame();
 
 let wheel = document.getElementsByClassName('wheel')[0];
 let ballTrack = document.getElementsByClassName('ballTrack')[0];
 
 function resetGame(){
-	getUserPuccoins().then(puccoins => {
-		bankValue = puccoins;
-		currentBet = 0;
-		wager = 5;
-		bet = [];
-		numbersBet = [];
-		previousNumbers = [];
-		document.getElementById('betting_board').remove();
-		if (document.getElementById('notification')) {
-			document.getElementById('notification').remove();
-		}
-		buildBettingBoard();
-	});
+    getUserPuccoins().then(puccoins => {
+        bankValue = puccoins;
+        currentBet = 0;
+        wager = 5;
+        bet = [];
+        numbersBet = [];
+        previousNumbers = [];
+        document.getElementById('betting_board').remove();
+        document.getElementById('notification').remove();
+        buildBettingBoard();
+    });
 }
 
 function startGame(){
@@ -455,175 +473,180 @@ function buildBettingBoard(){
 }
 
 function clearBet(){
-	bet = [];
-	numbersBet = [];
+    bet = [];
+    numbersBet = [];
+    updateUserPuccoins(bankValue);
 }
 
 function setBet(e, n, t, o){
-	lastWager = wager;
-	wager = (bankValue < wager)? bankValue : wager;
-	if(wager > 0){
-		if(!container.querySelector('.spinBtn')){
-			let spinBtn = document.createElement('div');
-			spinBtn.setAttribute('class', 'spinBtn');
-			spinBtn.innerText = 'spin';
-			spinBtn.onclick = function(){
-				this.remove();
-				spin();
-			};
-			container.append(spinBtn);
-		}
-		bankValue = bankValue - wager;
-		currentBet = currentBet + wager;
-		document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
-		document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
-		for(i = 0; i < bet.length; i++){
-			if(bet[i].numbers == n && bet[i].type == t){
-				bet[i].amt = bet[i].amt + wager;
-				let chipColour = (bet[i].amt < 5)? 'red' : ((bet[i].amt < 10)? 'blue' : ((bet[i].amt < 100)? 'orange' : 'gold'));
-				e.querySelector('.chip').style.cssText = '';
-				e.querySelector('.chip').setAttribute('class', 'chip ' + chipColour);
-				let chipSpan = e.querySelector('.chipSpan');
-				chipSpan.innerText = bet[i].amt;
-				return;
-			}
-		}
-		var obj = {
-			amt: wager,
-			type: t,
-			odds: o,
-			numbers: n
-		};
-		bet.push(obj);
-		
-		let numArray = n.split(',').map(Number);
-		for(i = 0; i < numArray.length; i++){
-			if(!numbersBet.includes(numArray[i])){
-				numbersBet.push(numArray[i]);
-			}
-		}
+    lastWager = wager;
+    wager = (bankValue < wager)? bankValue : wager;
+    if(wager > 0){
+        if(!container.querySelector('.spinBtn')){
+            let spinBtn = document.createElement('div');
+            spinBtn.setAttribute('class', 'spinBtn');
+            spinBtn.innerText = 'spin';
+            spinBtn.onclick = function(){
+                this.remove();
+                spin();
+            };
+            container.append(spinBtn);
+        }
+        bankValue = bankValue - wager;
+        currentBet = currentBet + wager;
+        updateUserPuccoins(bankValue);
+        document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
+        document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
+        for(i = 0; i < bet.length; i++){
+            if(bet[i].numbers == n && bet[i].type == t){
+                bet[i].amt = bet[i].amt + wager;
+                let chipColour = (bet[i].amt < 5)? 'red' : ((bet[i].amt < 10)? 'blue' : ((bet[i].amt < 100)? 'orange' : 'gold'));
+                e.querySelector('.chip').style.cssText = '';
+                e.querySelector('.chip').setAttribute('class', 'chip ' + chipColour);
+                let chipSpan = e.querySelector('.chipSpan');
+                chipSpan.innerText = bet[i].amt;
+                return;
+            }
+        }
+        var obj = {
+            amt: wager,
+            type: t,
+            odds: o,
+            numbers: n
+        };
+        bet.push(obj);
+        
+        let numArray = n.split(',').map(Number);
+        for(i = 0; i < numArray.length; i++){
+            if(!numbersBet.includes(numArray[i])){
+                numbersBet.push(numArray[i]);
+            }
+        }
 
-		if(!e.querySelector('.chip')){
-			let chipColour = (wager < 5)? 'red' : ((wager < 10)? 'blue' : ((wager < 100)? 'orange' : 'gold'));
-			let chip = document.createElement('div');
-			chip.setAttribute('class', 'chip ' + chipColour);
-			let chipSpan = document.createElement('span');
-			chipSpan.setAttribute('class', 'chipSpan');
-			chipSpan.innerText = wager;
-			chip.append(chipSpan);
-			e.append(chip);
-		}
-	}
+        if(!e.querySelector('.chip')){
+            let chipColour = (wager < 5)? 'red' : ((wager < 10)? 'blue' : ((wager < 100)? 'orange' : 'gold'));
+            let chip = document.createElement('div');
+            chip.setAttribute('class', 'chip ' + chipColour);
+            let chipSpan = document.createElement('span');
+            chipSpan.setAttribute('class', 'chipSpan');
+            chipSpan.innerText = wager;
+            chip.append(chipSpan);
+            e.append(chip);
+        }
+    }
 }
 
 function spin(){
-	var winningSpin = Math.floor(Math.random() * 37);
-	spinWheel(winningSpin);
-	setTimeout(function(){
-		if(numbersBet.includes(winningSpin)){
-			let winValue = 0;
-			let betTotal = 0;
-			for(i = 0; i < bet.length; i++){
-				var numArray = bet[i].numbers.split(',').map(Number);
-				if(numArray.includes(winningSpin)){
-					bankValue = (bankValue + (bet[i].odds * bet[i].amt) + bet[i].amt);
-					winValue = winValue + (bet[i].odds * bet[i].amt);
-					betTotal = betTotal + bet[i].amt;
-				}
-			}
-			win(winningSpin, winValue, betTotal);
-		}
+    var winningSpin = Math.floor(Math.random() * 37);
+    spinWheel(winningSpin);
+    setTimeout(function(){
+        if(numbersBet.includes(winningSpin)){
+            let winValue = 0;
+            let betTotal = 0;
+            for(i = 0; i < bet.length; i++){
+                var numArray = bet[i].numbers.split(',').map(Number);
+                if(numArray.includes(winningSpin)){
+                    bankValue = (bankValue + (bet[i].odds * bet[i].amt) + bet[i].amt);
+                    winValue = winValue + (bet[i].odds * bet[i].amt);
+                    betTotal = betTotal + bet[i].amt;
+                }
+            }
+            updateUserPuccoins(bankValue);
+            win(winningSpin, winValue, betTotal);
+        }
 
-		currentBet = 0;
-		document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
-		document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
-		
-		let pnClass = (numRed.includes(winningSpin))? 'pnRed' : ((winningSpin == 0)? 'pnGreen' : 'pnBlack');
-		let pnContent = document.getElementById('pnContent');
-		let pnSpan = document.createElement('span');
-		pnSpan.setAttribute('class', pnClass);
-		pnSpan.innerText = winningSpin;
-		pnContent.append(pnSpan);
-		pnContent.scrollLeft = pnContent.scrollWidth;
+        currentBet = 0;
+        document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
+        document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
+        
+        let pnClass = (numRed.includes(winningSpin))? 'pnRed' : ((winningSpin == 0)? 'pnGreen' : 'pnBlack');
+        let pnContent = document.getElementById('pnContent');
+        let pnSpan = document.createElement('span');
+        pnSpan.setAttribute('class', pnClass);
+        pnSpan.innerText = winningSpin;
+        pnContent.append(pnSpan);
+        pnContent.scrollLeft = pnContent.scrollWidth;
 
-		bet = [];
-		numbersBet = [];
-		removeChips();
-		wager = lastWager;
-		if(bankValue == 0 && currentBet == 0){
-			gameOver();
-		}
-	}, 10000);
+        bet = [];
+        numbersBet = [];
+        removeChips();
+        wager = lastWager;
+        if(bankValue == 0 && currentBet == 0){
+            gameOver();
+        }
+    }, 10000);
 }
 
 function win(winningSpin, winValue, betTotal){
-	if(winValue > 0){
-		let notification = document.createElement('div');
-		notification.setAttribute('id', 'notification');
-			let nSpan = document.createElement('div');
-			nSpan.setAttribute('class', 'nSpan');
-				let nsnumber = document.createElement('span');
-				nsnumber.setAttribute('class', 'nsnumber');
-				nsnumber.style.cssText = (numRed.includes(winningSpin))? 'color:red' : 'color:black';
-				nsnumber.innerText = winningSpin;
-				nSpan.append(nsnumber);
-				let nsTxt = document.createElement('span');
-				nsTxt.innerText = ' Win';
-				nSpan.append(nsTxt);
-				let nsWin = document.createElement('div');
-				nsWin.setAttribute('class', 'nsWin');
-					let nsWinBlock = document.createElement('div');
-					nsWinBlock.setAttribute('class', 'nsWinBlock');
-					nsWinBlock.innerText = 'Bet: ' + betTotal;
-					nSpan.append(nsWinBlock);
-					nsWin.append(nsWinBlock);
-					nsWinBlock = document.createElement('div');
-					nsWinBlock.setAttribute('class', 'nsWinBlock');
-					nsWinBlock.innerText = 'Win: ' + winValue;
-					nSpan.append(nsWinBlock);
-					nsWin.append(nsWinBlock);
-					nsWinBlock = document.createElement('div');
-					nsWinBlock.setAttribute('class', 'nsWinBlock');
-					nsWinBlock.innerText = 'Payout: ' + (winValue + betTotal);
-					nsWin.append(nsWinBlock);
-				nSpan.append(nsWin);
-			notification.append(nSpan);
-		container.prepend(notification);
-		setTimeout(function(){
-			notification.style.cssText = 'opacity:0';
-		}, 3000);
-		setTimeout(function(){
-			notification.remove();
-		}, 4000);
-	}
+    if(winValue > 0){
+        updateUserPuccoins(bankValue);
+        let notification = document.createElement('div');
+        notification.setAttribute('id', 'notification');
+            let nSpan = document.createElement('div');
+            nSpan.setAttribute('class', 'nSpan');
+                let nsnumber = document.createElement('span');
+                nsnumber.setAttribute('class', 'nsnumber');
+                nsnumber.style.cssText = (numRed.includes(winningSpin))? 'color:red' : 'color:black';
+                nsnumber.innerText = winningSpin;
+                nSpan.append(nsnumber);
+                let nsTxt = document.createElement('span');
+                nsTxt.innerText = ' Win';
+                nSpan.append(nsTxt);
+                let nsWin = document.createElement('div');
+                nsWin.setAttribute('class', 'nsWin');
+                    let nsWinBlock = document.createElement('div');
+                    nsWinBlock.setAttribute('class', 'nsWinBlock');
+                    nsWinBlock.innerText = 'Bet: ' + betTotal;
+                    nSpan.append(nsWinBlock);
+                    nsWin.append(nsWinBlock);
+                    nsWinBlock = document.createElement('div');
+                    nsWinBlock.setAttribute('class', 'nsWinBlock');
+                    nsWinBlock.innerText = 'Win: ' + winValue;
+                    nSpan.append(nsWinBlock);
+                    nsWin.append(nsWinBlock);
+                    nsWinBlock = document.createElement('div');
+                    nsWinBlock.setAttribute('class', 'nsWinBlock');
+                    nsWinBlock.innerText = 'Payout: ' + (winValue + betTotal);
+                    nsWin.append(nsWinBlock);
+                nSpan.append(nsWin);
+            notification.append(nSpan);
+        container.prepend(notification);
+        setTimeout(function(){
+            notification.style.cssText = 'opacity:0';
+        }, 3000);
+        setTimeout(function(){
+            notification.remove();
+        }, 4000);
+    }
 }
 
 function removeBet(e, n, t, o){
-	wager = (wager == 0)? 100 : wager;
-	for(i = 0; i < bet.length; i++){
-		if(bet[i].numbers == n && bet[i].type == t){
-			if(bet[i].amt != 0){
-				wager = (bet[i].amt > wager)? wager : bet[i].amt;
-				bet[i].amt = bet[i].amt - wager;
-				bankValue = bankValue + wager;
-				currentBet = currentBet - wager;
-				document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
-				document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
-				if(bet[i].amt == 0){
-					e.querySelector('.chip').style.cssText = 'display:none';
-				}else{
-					let chipColour = (bet[i].amt < 5)? 'red' : ((bet[i].amt < 10)? 'blue' : ((bet[i].amt < 100)? 'orange' : 'gold'));
-					e.querySelector('.chip').setAttribute('class', 'chip ' + chipColour);
-					let chipSpan = e.querySelector('.chipSpan');
-					chipSpan.innerText = bet[i].amt;
-				}
-			}
-		}
-	}
+    wager = (wager == 0)? 100 : wager;
+    for(i = 0; i < bet.length; i++){
+        if(bet[i].numbers == n && bet[i].type == t){
+            if(bet[i].amt != 0){
+                wager = (bet[i].amt > wager)? wager : bet[i].amt;
+                bet[i].amt = bet[i].amt - wager;
+                bankValue = bankValue + wager;
+                currentBet = currentBet - wager;
+                updateUserPuccoins(bankValue);
+                document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
+                document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
+                if(bet[i].amt == 0){
+                    e.querySelector('.chip').style.cssText = 'display:none';
+                }else{
+                    let chipColour = (bet[i].amt < 5)? 'red' : ((bet[i].amt < 10)? 'blue' : ((bet[i].amt < 100)? 'orange' : 'gold'));
+                    e.querySelector('.chip').setAttribute('class', 'chip ' + chipColour);
+                    let chipSpan = e.querySelector('.chipSpan');
+                    chipSpan.innerText = bet[i].amt;
+                }
+            }
+        }
+    }
 
-	if(currentBet == 0 && container.querySelector('.spinBtn')){
-		document.getElementsByClassName('spinBtn')[0].remove();
-	}
+    if(currentBet == 0 && container.querySelector('.spinBtn')){
+        document.getElementsByClassName('spinBtn')[0].remove();
+    }
 }
 
 function spinWheel(winningSpin){
