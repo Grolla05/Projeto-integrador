@@ -1,3 +1,4 @@
+let bankValue = 0;
 // Função para obter o valor de puccoins do usuário logado
 function getUserPuccoins() {
     return fetch('/getPuccoins')
