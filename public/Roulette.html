@@ -15,26 +15,6 @@
             <nav>
                 <ul>
                     <ul class="button-container-direita">
-                        <li>
-                            <button type="button" id="Login"><a href="/Login">Login</a></button>
-                        </li>
-                        <li><!-- Botão para abrir o pop-up -->
-                            <button class="open-popup-btn" onclick="openPopup()">Registrar-se</button>
-
-                            <!-- Modal de registro -->
-                            <div class="modal-bg" id="modalBg">
-                                <div class="modal">
-                                    <span class="close-btn" onclick="closePopup()">×</span>
-                                    <h2>Crie sua Conta</h2>
-                                    <form>
-                                        <input type="text" placeholder="Nome Completo" required>
-                                        <input type="email" placeholder="E-mail" required>
-                                        <input type="password" placeholder="Senha" required>
-                                        <button type="submit">Registrar</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                     <ul class="button-container-esquerda">
                         <li><button type="button" id="Cassino"><a href="/Cassino">Cassino</a></button></li>
@@ -45,6 +25,8 @@
                             src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
                             alt="Logo Puc Bet">
                     </a>
+                </ul>
+            </nav>
         </div>
     </header>
     <div class="sidebar">
@@ -63,7 +45,6 @@
                 <span class="PUCBET-icon">▼</span>
             </h3>
             <ul class="game-list">
-                <li><a class="sidebar-link" href="/Crash"><span class="icon">⚡</span><span class="text">Crash</span></a></li>
             </ul>
         </div>
         <div class="menu">
@@ -72,7 +53,6 @@
                 <span class="Cassino-icon">▼</span>
             </h3>
             <ul class="Cassino-list">
-                <li><a class="sidebar-link" href="/Blackjack"><span class="icon">🃏</span> <span class="text">Blackjack</span></a></li>
                 <li><a class="sidebar-link" href="/Roulette"><span class="icon">🎡</span> <span class="text">Roleta</span></a></li>
             </ul>
         </div>
