@@ -1,225 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="/styless.css">
-</head>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/11.0.2/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/11.0.2/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-<body>
-    <header>
-        <div id="navegacao">
-            <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
-            <nav>
-                <ul>
-                    <ul class="button-container-direita">
-                        <li>
-                            <button class="open-popup-btn-login" onclick="openPopupLogin()">Entrar</button>
-                        </li>
-                        <li>
-                            <button class="open-popup-btn" onclick="openPopupRegister()">Registrar-se</button>
-                        </li>
-                    </ul>
-                    <ul class="button-container-esquerda">
-                        <li><button type="button" id="Cassino"><a href="/CassinoHUB">Cassino</a></button></li>
-                        <li><button type="button" id="Precisa-ajuda"><a href="/Contact"><b>Precisa de Ajuda?</b></a></button></li>
-                    </ul>
-                    <a href="/">
-                        <img class="Logo-Puc-Bet"
-                            src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
-                            alt="Logo Puc Bet">
-                    </a>
-                </ul>
-        </div>
-    </header>
-    <div class="sidebar">
-        <div class="bonus-button">
-            <button class="open-popup-btn" onclick="openPopupRegister()">
-                <img class="Logo-Puc-Bet-sidebar" id="Logo-Puc-Bet-sidebar"
-                    src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo-Sem-Nome.png?raw=true">..
-                1000 PUCOINS Grátis</button>
-        </div>
-        <div class="menu">
-            <ul>
-                <li><span class="icon">🎮</span> <span class="text">Jogado Recentemente</span></li>
-            </ul>
-            <h3 onclick="toggleGamelist()" class="group-game">
-                Originais da PUCBET
-                <span class="PUCBET-icon">▼</span>
-            </h3>
-            <ul class="game-list">
-            </ul>
-        </div>
-        <div class="menu">
-            <h3 onclick="toggleCassinolist()" class="group-Cassino">
-                Cassino
-                <span class="Cassino-icon">▼</span>
-            </h3>
-            <ul class="Cassino-list">
-                <li><a class="sidebar-link" href="/CassinoHUB"><span class="icon">🎡</span> <span class="text">Roleta</a></span></li>
-            </ul>
-        </div>
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
-    <main>
-        <section id="main-content">
-            <div class="welcome-banner">
-                <h1>Bem-vindo à Pucbet</h1>
-                <p>Cadastre-se e receba o bonus de deposito de até 1.000 PUCOINS !</p>
-                <p>Entre para jogar!</p>
-                <button class="open-popup-btn" onclick="openPopupRegister()">Cadastre-se</button>
-                <!-- Modal de registro -->
-                <div class="modal-Bg-register" id="modalBg-register">
-                    <div class="modal">
-                        <span class="close-btn" onclick="closePopupRegister()">×</span>
-                        <a href="/">
-                            <img class="Logo-Puc-Bet-register"
-                                src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
-                                alt="Logo Puc Bet">
-                        </a>
-                        <h2 class="h2-registre-se">Faça login na sua conta da PUC BET </h2>
-                        <form id="registerForm">
-                            <input type="text" id="username" placeholder="Nome Completo" required>
-                            <input type="email" id="email" placeholder="E-mail" required>
-                            <input type="password" id="password" placeholder="Senha" required>
-                            <input type="password" id="confirmPassword" placeholder="Confirme sua Senha" required>
-                            <button class="submit" type="submit">Registrar</button>
-                        </form>
-                        <script>
-                            document.getElementById('registerForm').addEventListener('submit', function(event) {
-                                event.preventDefault();
-                                const username = document.getElementById('username').value;
-                                const email = document.getElementById('email').value;
-                                const password = document.getElementById('password').value;
-                                const confirmPassword = document.getElementById('confirmPassword').value;
-                        
-                                if (password !== confirmPassword) {
-                                    alert('As senhas não coincidem');
-                                    return;
-                                }
-                        
-                                fetch('/check-availability', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({ username, email })
-                                })
-                                .then(response => response.text())
-                                .then(data => {
-                                    if (data === 'Disponível') {
-                                        return fetch('/register', {
-                                            method: 'POST',
-                                            headers: {
-                                                'Content-Type': 'application/json'
-                                            },
-                                            body: JSON.stringify({ username, email, password })
-                                        });
-                                    } else {
-                                        throw new Error(data);
-                                    }
-                                })
-                                .then(response => response.text())
-                                .then(data => {
-                                    alert(data);
-                                    if (data === 'Usuário registrado com sucesso') {
-                                        closePopupRegister();
-                                    }
-                                })
-                                .catch(error => {
-                                    alert(error.message);
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-                <button class="open-popup-btn-login" onclick="openPopupLogin()">Entrar</button>
-                <!-- Modal de Login -->
-                <div class="modal-Bg-login" id="modalBg-login">
-                    <div class="modal-login">
-                        <span class="close-btn" onclick="closePopupLogin()">×</span>
-                        <a href="/">
-                            <img class="Logo-Puc-Bet-register"
-                                src="https://github.com/Grolla05/PUCCAMP/blob/main/PI:%20Desenvolvimento%20Web/Projeto_integrador/source/Logo%20Puc%20Bet.png?raw=true"
-                                alt="Logo Puc Bet">
-                        </a>
-                        <h2 class="h2-login">Faça login na sua conta da PUC BET </h2>
-                        <form>
-                            <input type="email" placeholder="E-mail" required>
-                            <input type="password" placeholder="Senha" required>
-                            <button class="submit-login" type="submit">Logar-se</button>
-                        </form>
-                    <script>
-                        document.querySelector('.modal-login form').addEventListener('submit', function(event) {
-                            event.preventDefault();
-                            const email = event.target.querySelector('input[type="email"]').value;
-                            const password = event.target.querySelector('input[type="password"]').value;
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
-                            fetch('/login', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({ email: email, password: password })
-                            })
-                            .then(response => response.text())
-                            .then(data => {
-                                alert(data);
-                                if (data === 'Login bem-sucedido') {
-                                    closePopupLogin();
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Erro:', error);
-                            });
-                        });
-                    </script>
-                    </div>
-                </div>
-                <img class="Banner-principal-home" src="/Pages/images/Cassino Chips blue.png">
-            </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-            <div class="feature-sections">
-                <div class="feature-card">
-                    <h2>🃏 Batalhas de Slots</h2>
-                    <p>Compita em emocionantes batalhas de máquinas caça-níqueis e ganhe grandes recompensas.</p>
-                    <a href="#" class="feature-link">></a>
-                </div>
-                <div class="feature-card">
-                    <h2>💎 Recompensas Únicas</h2>
-                    <p>Ganhe recompensas exclusivas através de desafios especiais!</p>
-                    <a href="#" class="feature-link">></a>
-                </div>
-                <div class="feature-card">
-                    <h2>👥 Indique um Amigo</h2>
-                    <p>Convide amigos e ganhe bônus por cada indicação bem-sucedida.</p>
-                    <a href="#" class="feature-link">></a>
-                </div>
-            </div>
-
-            <div class="additional-sections">
-                <div class="additional-card-cassino">
-                    <h2>🎰 Cassino</h2>
-                    <p>Explore o cassino com diversos jogos disponíveis!</p>
-                    <a href="/CassinoHUB" class="cta-button">IR AO CASSINO</a>
-                </div>
-                <div class="additional-card">
-                    <h2>⚽ Esportes</h2>
-                    <p>Aposte em seus esportes favoritos e ganhe prêmios.</p>
-                    <a href="#" class="cta-button">IR PARA ESPORTES</a>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <ul class="button-container-footer">
-            <li><button class="Sobre-nos" type="button" id="Sobre-nos"><a href="/About">Sobre Nos</a></button></li>
-            <li><button class="Central-Ajuda" type="button" id="Central-Ajuda"><a href="/Contact">Central de Ajuda</a></button></li>
-        </ul>
-        <p>Contato para SAC: (11) 99999-9999</p>
-        <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
-    </footer>
-    <script src="script.js"></script>
-</body>
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>
