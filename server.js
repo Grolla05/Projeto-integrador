@@ -75,8 +75,3 @@ server.get('/roulette', (req, res) => {
 server.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
-
-// Iniciar o servidor
-server.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
-});
