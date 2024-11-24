@@ -1,11 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyDacw_vn8GMxF-J42Hr1n1JuYTZow3kSeM",
     authDomain: "projeto-integrador-pucbet.firebaseapp.com",
@@ -18,7 +15,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
 const express = require('express');
 const path = require('path');
@@ -27,16 +24,13 @@ const server = express();
 const port = 3000;
 
 // Middleware para analisar o corpo das requisições
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Servir arquivos estáticos (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname, 'public')));
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
 
 // Rotas de autenticação
-app.post('/register', (req, res) => {
+server.post('/register', (req, res) => {
     const { email, password } = req.body;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             res.status(201).send('Usuário registrado com sucesso');
         })
@@ -45,9 +39,9 @@ app.post('/register', (req, res) => {
         });
 });
 
-app.post('/login', (req, res) => {
+server.post('/login', (req, res) => {
     const { email, password } = req.body;
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             res.status(200).send('Usuário logado com sucesso');
         })
@@ -57,24 +51,32 @@ app.post('/login', (req, res) => {
 });
 
 // Outras rotas
-app.get('/', (req, res) => {
+server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 
-app.get('/CassinoHUB', (req, res) => {
+server.get('/CassinoHUB', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'CassinoHUB.html'));
 });
 
-app.get('/Contact', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'Contact.html'));
-});
-
-app.get('/About', (req, res) => {
+server.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'about_us.html'));
 });
 
+server.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'Contact.html'));
+});
+
+server.get('/roulette', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'Roulette.html'));
+});
+
 // Iniciar o servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+server.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
+});
+
+// Iniciar o servidor
+server.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
 });
