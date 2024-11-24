@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "projeto-integrador-pucbet",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -7,4 +8,4 @@
       "**/node_modules/**"
     ]
   }
-}
+} 
