@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -22,95 +21,21 @@ header {
     /* Adiciona uma linha de contorno azul na parte inferior */
 }
 
-/*Container para estilizar e manter a logo na esquerda logo apos o menu*/
+/* Container para estilizar e manter a logo na esquerda logo após o menu */
 .Logo-Puc-Bet {
     transform: scale(0.28);
-    /* Reduz a imagem para 50% do tamanho original */
+    /* Reduz a imagem para 28% do tamanho original */
     display: flex;
     justify-content: flex-end;
     position: absolute;
     /* Posiciona o container de botões */
-    left: -120px;
+    left: 10px;
     /* Alinha o container à esquerda */
-    top: -45px;
-    /* Alinha o container ao topo */
-}
-
-/* Container para manter os botões no lado direito */
-.button-container-direita {
-    font-family: 'Poppins', sans-serif;
-    /* Fonte para botões */
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px;
-    /* Adiciona espaço ao redor dos botões */
-    position: absolute;
-    /* Posiciona o container de botões */
-    right: 0;
-    /* Alinha o container à direita */
-    top: 5px;
-    /* Alinha o container ao topo */
-    transform: translateY(-10%);
+    top: 50%;
+    /* Alinha o container ao centro verticalmente */
+    transform: translateY(-50%) scale(0.28);
     /* Ajuste para alinhar exatamente ao centro vertical */
-    list-style-type: none;
-    /* Remove o estilo de lista dos <li> */
-}
-
-/* Remove a formatação padrão de links */
-.button-container-direita a {
-    font-family: 'Poppins', sans-serif;
-    /* Fonte para botões */
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    /* O link ocupará todo o botão */
-    width: 100%;
-    height: 100%;
-}
-
-/* Estilo do botão "Login" */
-#Login {
-    background-color: transparent;
-    /* Sem fundo */
-    color: #ffffff;
-    /* Texto branco */
-    border: none;
-    /* Remove a borda */
-    margin: 0 5px;
-    /* Espaço entre os botões */
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Efeito hover para o botão "Login" */
-#Login:hover {
-    background-color: #037;
-    /* Azul-marinho mais claro ao passar o mouse */
-}
-
-/* Estilo do botão "Register" */
-#Register {
-    background-color: #5D5A88;
-    /* Azul-marinho */
-    color: #ffffff;
-    /* Texto branco */
-    border: none;
-    margin: 0 5px;
-    /* Espaço entre os botões */
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Efeito hover para o botão "Register" */
-#Register:hover {
-    background-color: #037;
-    /* Azul-marinho mais claro ao passar o mouse */
+    transition: transform 0.3s ease;
 }
 
 /* Container para manter os botões no lado esquerdo */
@@ -235,7 +160,6 @@ header {
     transition: background-color 0.3s ease;
 }
 
-
 body {
     display: flex;
     justify-content: center;
@@ -247,37 +171,37 @@ body {
 }
 
 .container {
-    max-width: 600px;
-    padding: 20px;
+    max-width: 60vw;
+    padding: 2vw;
     animation: fadeIn 1s ease-in-out;
 }
 
 h1 {
-    font-size: 100px;
+    font-size: 10vw;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 1vw;
     color: #e8e8e8;
 }
 
 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 2.4vw;
+    margin-bottom: 2vw;
     color: #e8e8e8;
 }
 
 p {
-    font-size: 18px;
+    font-size: 1.8vw;
     color: #aaaaaa;
-    margin-bottom: 30px;
+    margin-bottom: 3vw;
 }
 
 .back-home {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 1vw 2vw;
+    font-size: 1.6vw;
     color: #ffffff;
     background-color: #5D5A88;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.5vw;
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s;
@@ -287,7 +211,6 @@ p {
     background-color: transparent;
 }
 
-/* Animação de fade-in */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -303,22 +226,22 @@ footer {
     background-color: #1F2840;
     color: white;
     text-align: center;
-    padding: 20px 0;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 2vw 0;
+    padding-left: 2vw;
+    padding-right: 2vw;
     position: fixed;
-    bottom: -100px; /* Inicialmente fora da tela */
+    bottom: -10vw;
     width: 100%;
     border-top: 2px solid #253C8E;
-    transition: bottom 0.5s ease; /* Animação suave ao aparecer */
-    visibility: hidden; /* Oculto inicialmente */
+    transition: bottom 0.5s ease;
+    visibility: hidden;
 }
 
 .button-container-footer {
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: flex-end;
-    padding: 20px;
+    padding: 2vw;
     position: absolute;
     right: 0;
     top: 0;
@@ -338,10 +261,10 @@ footer {
     background-color: #5D5A88;
     color: #ffffff;
     border: none;
-    margin: 0 5px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 16px;
+    margin: 0 1vw;
+    padding: 1vw 2vw;
+    border-radius: 2vw;
+    font-size: 1.6vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -355,10 +278,47 @@ footer {
     background-color: transparent;
     color: #ffffff;
     border: none;
-    margin: 0 5px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 16px;
+    margin: 0 1vw;
+    padding: 1vw 2vw;
+    border-radius: 2vw;
+    font-size: 1.6vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    header, footer {
+        padding: 4vw 2vw;
+    }
+
+    .Logo-Puc-Bet {
+        transform: scale(0.15);
+    }
+
+    .button-container-direita, .button-container-esquerda, .button-container-footer {
+        padding: 0vw;
+    }
+
+    #Login, #Register, #Cassino, #Precisa-ajuda, #Central-Ajuda, #Sobre-nos {
+        font-size: 3vw;
+        padding: 2vw 4vw;
+    }
+
+    h1 {
+        font-size: 15vw;
+    }
+
+    h2 {
+        font-size: 4vw;
+    }
+
+    p {
+        font-size: 3vw;
+    }
+
+    .back-home {
+        font-size: 3vw;
+        padding: 2vw 4vw;
+    }
 }

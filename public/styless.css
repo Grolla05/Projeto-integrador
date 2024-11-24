@@ -650,63 +650,26 @@ body {
     margin: 15px; /* Adiciona uma margem para afastar a imagem das bordas */
 }
 
-/* Estilo responsivo */
-@media (max-width: 1024px) {
-    .container {
-        padding: 10px;
-    }
-
-    .form-container {
-        padding: 15px;
-    }
-
-    button {
-        padding: 8px;
-        font-size: 14px;
+@media (max-width: 1920px) {
+    .Banner-principal-home {
+        transform: scale(0.4); /* Ajusta a escala para telas menores */
+        right: 180px; /* Ajusta a posição para telas menores */
     }
 }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 24px;
-    }
-
-    .form-container {
-        padding: 10px;
-    }
-
-    .input-group input, 
-    .input-group textarea {
-        font-size: 14px;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 8px;
+@media (max-width: 1440px) {
+    .Banner-principal-home {
+        transform: scale(0.3); /* Ajusta a escala para telas menores */
+        right: 150px; /* Ajusta a posição para telas menores */
     }
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    .form-container {
-        padding: 10px;
-    }
-
-    .input-group input, 
-    .input-group textarea {
-        font-size: 12px;
-        padding: 8px;
-    }
-
-    button {
-        font-size: 12px;
-        padding: 6px;
+@media (max-width: 1080px) {
+    .Banner-principal-home {
+        transform: scale(0.2); /* Ajusta a escala para telas menores */
+        right: 100px; /* Ajusta a posição para telas menores */
     }
 }
-
 
 .feature-sections, .additional-sections {
     display: flex;
