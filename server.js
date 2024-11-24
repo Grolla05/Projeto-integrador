@@ -49,11 +49,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 
-server.get('/CassinoHUB', (req, res) => {
+app.get('/CassinoHUB', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'CassinoHUB.html'));
 });
 
-server.get('/about', (req, res) => {
+app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'about_us.html'));
 });
 
