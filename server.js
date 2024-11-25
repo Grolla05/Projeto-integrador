@@ -45,23 +45,23 @@ const db = new sqlite3.Database('./projeto_integrador.db', (err) => {
 // Servir arquivos estáticos (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 
-app.post('/CassinoHUB', (req, res) => {
+app.get('/CassinoHUB', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'CassinoHUB.html'));
 });
 
-app.post('/about', (req, res) => {
+app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'about_us.html'));
 });
 
-app.post('/404', (req, res) => {
+app.get('/404', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
-app.post('/Roulette', (req, res) => {
+app.get('/Roulette', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'Roulette.html'));
 });
 
