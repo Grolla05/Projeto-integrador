@@ -1,13 +1,17 @@
 // public/auth.js
 
-import { auth, database } from './firebase-config'; // Importa auth e database
+// Reference to the Firebase Authentication service
+const auth = firebase.auth();
 
-// Função para registrar um novo usuário
+// Reference to the Firebase Realtime Database service
+const database = firebase.database();
+
+// Function to handle user registration
 function registerUser(email, password) {
     auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            // Salva informações adicionais do usuário no banco de dados
+            // Save additional user info to the database
             database.ref('users/' + user.uid).set({
                 email: user.email,
                 puccoins: 1000
@@ -20,7 +24,7 @@ function registerUser(email, password) {
         });
 }
 
-// Função para fazer login do usuário
+// Function to handle user login
 function loginUser(email, password) {
     auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
@@ -33,7 +37,7 @@ function loginUser(email, password) {
         });
 }
 
-// Função para obter os puccoins do usuário
+// Function to get the user's puccoins
 function getUserPuccoins() {
     const user = auth.currentUser;
     if (user) {
@@ -50,7 +54,7 @@ function getUserPuccoins() {
     }
 }
 
-// Função para atualizar os puccoins do usuário
+// Function to update the user's puccoins
 function updateUserPuccoins(puccoins) {
     const user = auth.currentUser;
     if (user) {
