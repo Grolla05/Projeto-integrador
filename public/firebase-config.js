@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database"; // Importa o serviço de banco de dados
 
 const firebaseConfig = {
   apiKey: "AIzaSyDacw_vn8GMxF-J42Hr1n1JuYTZow3kSeM",
@@ -14,3 +16,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+export const auth = getAuth(app);
+export const database = getDatabase(app); // Inicializa e exporta o banco de dados
