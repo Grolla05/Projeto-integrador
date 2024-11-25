@@ -617,6 +617,7 @@ body {
     flex: 1;
     padding: 20px; /* Aumenta o padding para expandir o conteúdo internamente */
     max-width: 1100px; /* Limita a largura máxima para 1200px */
+    min-width: 320px; /* Define a largura mínima como 320px */
     width: 90%; /* Define a largura como 100% para preencher o espaço disponível */
     margin: 0 auto; /* Centraliza o conteúdo na página */
     margin-top: 60px; /* Adiciona espaço acima do conteúdo */
@@ -865,6 +866,7 @@ main {
     flex: 1;
     /* Ocupa o espaço restante */
     color: white;
+    margin: auto;
 }
 
 h1 {

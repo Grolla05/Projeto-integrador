@@ -65,10 +65,6 @@ app.get('/Roulette', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'Roulette.html'));
 });
 
-app.get('/Blackjack', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'Blackjack.html'));
-});
-
 // Rota para verificar a disponibilidade de nome de usuário e email
 app.post('/check-availability', (req, res) => {
     const { username, email } = req.body;
