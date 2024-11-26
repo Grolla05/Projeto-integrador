@@ -19,7 +19,8 @@ app.use(session({
 }));
 
 // Configurar a conexão com o banco de dados SQLite
-const db = new sqlite3.Database('./projeto_integrador.db', (err) => {
+const dbPath = path.resolve(__dirname, 'projeto_integrador.db');
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error(err.message);
         throw err;
