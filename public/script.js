@@ -1,22 +1,30 @@
 function toggleSidebar() {
-  document.querySelector('.sidebar').classList.toggle('collapsed');
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('collapsed');
+}
+
+function handleResize() {
+    const sidebar = document.querySelector('.sidebar');
+    
+    // Esconde a sidebar automaticamente em resoluções menores ou iguais a 1519×856
+    if (window.innerWidth <= 1519 || window.innerHeight <= 856) {
+        sidebar.classList.add('collapsed');
+    } else {
+        sidebar.classList.remove('collapsed');
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const toggleButton = document.querySelector(".toggle-button");
-  const itemList = document.querySelector(".item-list");
+    const toggleButton = document.querySelector('.toggle-btn');
 
-  toggleButton.addEventListener("click", function () {
-      itemList.classList.toggle("hidden");
-      
-      // Atualiza o texto do botão com base no estado da lista
-      if (itemList.classList.contains("hidden")) {
-          toggleButton.textContent = "Mostrar Itens";
-      } else {
-          toggleButton.textContent = "Ocultar Itens";
-      }
-  });
+    // Configura evento de clique no botão para expandir/colapsar
+    toggleButton.addEventListener('click', toggleSidebar);
+
+    // Configura o redimensionamento da janela
+    handleResize();
+    window.addEventListener('resize', handleResize);
 });
+
 
 function toggleGamelist() {
     const gameList = document.querySelector('.game-list');
