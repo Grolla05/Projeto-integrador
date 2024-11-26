@@ -620,7 +620,6 @@ body {
     width: 90%; /* Define a largura como 100% para preencher o espaço disponível */
     margin: 0 auto; /* Centraliza o conteúdo na página */
     margin-top: 60px; /* Adiciona espaço acima do conteúdo */
-    min-height: 80vh; /* Define a altura mínima como 80% da altura da tela */
 }
 
 /* Seção sobre nós */
