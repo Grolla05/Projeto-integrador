@@ -600,7 +600,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     padding-top: 100px;
     /* Adiciona espaço equivalente à altura do header */
-
     padding: 0;
     background-color: #1F2840;
     display: flex;
@@ -611,6 +610,13 @@ body {
     height: 100vh;
     margin: 0;
     transition: background 0.2s linear;
+    cursor: default;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 #main-content {
@@ -626,6 +632,7 @@ body {
 main {
     font-family: 'Montserrat', sans-serif;
     /* Fonte para títulos */
+    display: flex;
     padding: 20px;
     margin-left: 50px;
     text-align: center;
