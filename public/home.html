@@ -221,5 +221,26 @@
         <p>Ⓒ 2024 PUCBET. Todos os direitos reservados</p>
     </footer>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/check-session')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loggedIn) {
+                        document.getElementById('navegacao').innerHTML = `
+                            <button onclick="logout()">Logout</button>
+                            <span>Bem-vindo, ${data.username}</span>
+                        `;
+                    }
+                });
+        });
+
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(() => {
+                    window.location.reload();
+                });
+        }
+    </script>
 </body>
 </html>

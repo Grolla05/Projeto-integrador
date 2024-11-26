@@ -15,7 +15,7 @@ app.use(session({
     secret: 'e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8e5b0c8', // Troque por um segredo seguro
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Defina como true se estiver usando HTTPS
+    cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 } // 1 dia
 }));
 
 // Configurar a conexão com o banco de dados SQLite
@@ -169,6 +169,15 @@ app.post('/updatePuccoins', (req, res) => {
 // Exemplo de rota protegida
 app.get('/profile', isAuthenticated, (req, res) => {
     res.send(`Bem-vindo, ${req.session.username}`);
+});
+
+// Rota para verificar a sessão do usuário
+app.get('/check-session', (req, res) => {
+    if (req.session.userId) {
+        res.json({ loggedIn: true, username: req.session.username });
+    } else {
+        res.json({ loggedIn: false });
+    }
 });
 
 // Rota para logout
