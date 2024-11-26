@@ -474,7 +474,9 @@ h1 {
     display: flex;
     justify-content: center;
     background-color: #016D29;
-    height: 470px;
+    height: 500px;
+    width: 1200px;
+    margin-left: 20%;
     padding: 20px;
     color: #fff;
 }
