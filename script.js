@@ -1,6 +1,6 @@
 function toggleSidebar() {
     const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('collapsed');
+    sidebar.classList.toggle('active');
 }
 
 function handleResize() {
@@ -122,7 +122,6 @@ window.onclick = function (event) {
         closePopupLogin();
     }
 };
-
 
 // Função para exibir ou nao o footer
 document.addEventListener('DOMContentLoaded', function () {

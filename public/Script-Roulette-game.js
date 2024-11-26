@@ -2,7 +2,12 @@ let bankValue = 0;
 // Função para obter o valor de puccoins do usuário logado
 function getUserPuccoins() {
     return fetch('/getPuccoins')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao obter puccoins');
+            }
+            return response.json();
+        })
         .then(data => data.puccoins)
         .catch(error => {
             console.error('Erro ao obter puccoins:', error);
@@ -18,7 +23,12 @@ function updateUserPuccoins(puccoins) {
         },
         body: JSON.stringify({ puccoins: puccoins })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao atualizar puccoins');
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             console.log('Puccoins atualizados com sucesso');
