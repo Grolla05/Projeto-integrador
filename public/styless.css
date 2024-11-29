@@ -21,7 +21,29 @@ header {
     border-bottom: 2px solid #253C8E;
     /* Adiciona uma linha de contorno azul na parte inferior */
 }
+@media (max-width: 768px) {
+    header {
+        padding: 20px 0;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 
+    .button-container-direita {
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .button-container-esquerda {
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .Logo-Puc-Bet {
+        transform: scale(0.2);
+        left: -60px;
+        top: -30px;
+    }
+}
 /*Container para estilizar e manter a logo na esquerda logo apos o menu*/
 .Logo-Puc-Bet {
     transform: scale(0.28);
